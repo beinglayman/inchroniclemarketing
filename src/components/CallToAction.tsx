@@ -11,7 +11,7 @@ const CallToAction = () => {
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-12">
             Document, verify, and showcase your authentic career journey
           </p>
-          
+        </div>  
 
       </div>
     </section>
