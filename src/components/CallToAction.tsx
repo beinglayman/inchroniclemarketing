@@ -12,15 +12,7 @@ const CallToAction = () => {
             Document, verify, and showcase your authentic career journey
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-primary px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-50 transition-colors">
-              For Professionals
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-white/10 transition-colors">
-              For Employers
-            </button>
-          </div>
-        </div>
+
       </div>
     </section>
   );
