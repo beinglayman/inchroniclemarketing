@@ -46,7 +46,7 @@ const Contact = () => {
                 </div>
                 <h3 className="font-semibold text-gray-900 text-lg mb-3">Office Location</h3>
                 <p className="text-gray-600">
-                  
+                  Contact - Honey Arora<br/>
                   Sparklogics, 1503, Abil Imperial Atria,<br />
                   Baner, Pune, Maharashtra, India
                 </p>
