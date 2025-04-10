@@ -47,7 +47,7 @@ const Contact = () => {
                 <h3 className="font-semibold text-gray-900 text-lg mb-3">Office Location</h3>
                 <p className="text-gray-600">
                   
-                  3rd Floor, Awfis, Abil Imperial Commercial,<br />
+                  Sparklogics, 1503, Abil Imperial Atria,<br />
                   Baner, Pune, Maharashtra, India
                 </p>
               </div>
@@ -67,25 +67,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-6 rounded-xl shadow-lg">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Find Us</h2>
-            <div className="overflow-hidden rounded-xl border-4 border-primary/20">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2972425063854!2d73.77303243532384!3d18.556235087384844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMzJzIyLjQiTiA3M8KwNDYnMjIuOSJF!5e0!3m2!1sen!2sin!4v1709667547044!5m2!1sen!2sin"
-                width="100%"
-                height="500"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Bottom Banner */}
       <section className="py-16 bg-primary text-white">
