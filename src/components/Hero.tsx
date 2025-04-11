@@ -112,20 +112,19 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-primary/5 to-white overflow-hidden">
+    <div className="relative min-h-screen flex flex-col justify-center bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6">
       {/* Background embellishments */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto w-full py-8 sm:py-12 md:py-16">
         <div className="text-center">
-          <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in leading-tight">
             <span className="inline-block animate-slide-up">Building Trust Through Your Work,</span>
-            <br />
             <span className="inline-block animate-slide-up delay-100">Not CV</span>
           </h1>
           
-          <p className="text-xl md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10 max-w-3xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
             Document your professional journey as it happens - verified, validated, and vouched for!
           </p>
           
@@ -139,20 +138,20 @@ const Hero = () => {
           {/* Timeline Section */}
           <div 
             ref={timelineRef}
-            className={`mt-20 relative opacity-0 transition-all duration-1000 timeline-container ${isMobile ? 'flex flex-col h-[500px] items-center' : ''}`}
+            className={`mt-12 sm:mt-16 md:mt-20 relative opacity-0 transition-all duration-1000 timeline-container ${isMobile ? 'timeline-mobile' : ''}`}
             aria-label="Career timeline visualization"
           >
             {/* Timeline line */}
             <div 
-              className={`absolute ${isMobile ? 'left-1/2 top-0 w-[3px] h-full -translate-x-1/2' : 'top-1/2 left-0 w-full h-[3px] -translate-y-1/2'} bg-primary/30`} 
+              className={`absolute ${isMobile ? 'left-0 top-0 w-[3px] h-full' : 'top-1/2 left-0 w-full h-[3px] -translate-y-1/2'} bg-primary/30`} 
             />
             <div 
-              className={`absolute ${isMobile ? 'left-1/2 top-0 w-[3px] h-0 -translate-x-1/2' : 'top-1/2 left-0 w-0 h-[3px] -translate-y-1/2'} bg-primary timeline-line transition-all duration-1500 ease-out`} 
+              className={`absolute ${isMobile ? 'left-0 top-0 w-[3px] h-0' : 'top-1/2 left-0 w-0 h-[3px] -translate-y-1/2'} bg-primary timeline-line transition-all duration-1500 ease-out`} 
               style={{transitionDelay: '300ms'}}
             />
 
             {/* Timeline nodes */}
-            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-full' : 'flex justify-between items-center px-4'}`}>
+            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-[500px] pl-8' : 'flex justify-between items-center px-4'}`}>
               {milestones.map((milestone, index) => (
                 <div
                   key={index}
@@ -183,39 +182,42 @@ const Hero = () => {
                   </div>
 
                   {/* Milestone label */}
-                  <div className={`absolute ${isMobile ? '-right-[65px] top-0 text-left' : '-bottom-8 left-1/2 transform -translate-x-1/2'} text-sm text-gray-600 whitespace-nowrap`}>
+                  <div className={`absolute ${isMobile ? 'left-8 top-0 text-left' : '-bottom-8 left-1/2 transform -translate-x-1/2'} text-sm text-gray-600 whitespace-nowrap`}>
                     {milestone.label}
                   </div>
 
                   {/* Detailed popup */}
                   <div 
-                    className={`absolute ${isMobile ? 'left-8 top-0' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-20 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
-                    style={{transitionDelay: activeNode === index ? '50ms' : '0ms'}}
+                    className={`absolute ${isMobile ? 'left-8 -top-2 translate-y-0' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-20 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                    style={{
+                      transitionDelay: activeNode === index ? '50ms' : '0ms',
+                      [isMobile ? 'marginLeft' : 'marginBottom']: isMobile ? '8px' : '6px'
+                    }}
                   >
-                    <div className="rounded-lg shadow-xl text-left min-w-[250px] max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+                    <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden">
                       {/* Top section - Primary color */}
-                      <div className="bg-primary p-4">
+                      <div className="bg-primary p-3 sm:p-4">
                         {/* Title */}
-                        <h3 className="font-bold text-white text-base mb-1">{milestone.title}</h3>
+                        <h3 className="font-bold text-white text-sm sm:text-base mb-1">{milestone.title}</h3>
                         
                         {/* Description */}
-                        <p className="text-white/90 text-sm mb-2">{milestone.description}</p>
+                        <p className="text-white/90 text-xs sm:text-sm mb-2">{milestone.description}</p>
                       </div>
                       
                       {/* Verification section - White background */}
-                      <div className="bg-white p-3 flex items-center">
+                      <div className="bg-white p-2 sm:p-3 flex items-center">
                         <div className="mr-2">
                           {React.cloneElement(milestone.verifierIcon, { className: "w-4 h-4 text-primary" })}
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Verified by:</p>
-                          <p className="text-sm font-medium text-gray-700">{milestone.verifier}</p>
+                          <p className="text-xs sm:text-sm font-medium text-gray-700">{milestone.verifier}</p>
                         </div>
                         <div className="ml-auto text-xs text-gray-400">{milestone.date}</div>
                       </div>
                       
                       {/* Triangle pointer - now white to match the bottom section */}
-                      <div className={`absolute ${isMobile ? 'top-1/2 -left-2 -translate-y-1/2 rotate-45' : 'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45'} w-3 h-3 bg-white`} />
+                      <div className={`absolute ${isMobile ? 'top-4 -left-2 translate-y-0 rotate-45' : 'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45'} w-3 h-3 bg-white`} />
                     </div>
                   </div>
                 </div>
@@ -277,10 +279,8 @@ const globalStyles = `
   animation: pulse-glow 2s infinite;
 }
 
-@media (max-width: 768px) {
-  .timeline-container {
-    margin-left: 80px;
-  }
+.timeline-mobile {
+  margin-left: 20px;
 }
 `;
 
