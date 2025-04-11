@@ -34,25 +34,25 @@ const About = () => {
     {
       name: "Honey Arora",
       role: "Founder",
-      bio: "17+ years in Software development, Product management, and Management consulting roles. Ex EY, Ex Infoedge. \n MBA - IIM Ahmedabad",
+      bio: "17+ years in Software development, Product management, and Management consulting roles. \n Ex EY, Ex Infoedge. \n MBA - IIM Ahmedabad",
       image: "/img/honey.jpeg"
     },
     {
       name: "Ashish Gupta",
       role: "Co-Founder",
-      bio: "14+ years in software development and product management roles. <br/> Ex FinancePeer, Ex ICICI <br/> MBA - IIM Ahmedabad",
+      bio: "14+ years in software development and product management roles. \n Ex FinancePeer, Ex ICICI \n MBA - IIM Ahmedabad",
       image: "/img/ashish.jpeg"
     },
     {
       name: "Pawan Kumar Yadav",
       role: "Head of Technology",
-      bio: "14+ years in software development and product management roles. Ex Uber, Ex Microsoft",
+      bio: "14+ years in software development and product management roles. \n Ex Uber, Ex Microsoft",
       image: "/img/pawan.jpeg"
     },
     {
       name: "Anshuman Kumar",
       role: "Head of Data Science and AI",
-      bio: "5+ Years in data science and AI Development. Ex Deloitte, Ex Meta",
+      bio: "5+ Years in data science and AI Development. \n Ex Deloitte, Ex Meta",
       image: "/img/anshuman.jpeg"
     }
   ];
