@@ -166,16 +166,22 @@ const Hero = () => {
 
             {/* Popup Container - Moved outside the timeline nodes for better stacking */}
             <div className="popup-container" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100, pointerEvents: 'none' }}>
-              {activeNode !== null && milestones.map((milestone, index) => (
+              {activeNode !== null && (
                 <div 
-                  key={`popup-${index}`}
-                  className={`popup-wrapper fixed md:absolute ${isMobile ? 'left-0 right-0 top-1/4 mx-auto' : 'bottom-full mb-12 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-50 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 hidden'}`}
+                  key={`popup-${activeNode}`}
+                  className={`popup-wrapper fixed md:absolute ${isMobile ? 'left-0 right-0 top-1/4 mx-auto' : ''} transition-all duration-300 z-50 opacity-100 scale-100`}
                   style={{
-                    transitionDelay: activeNode === index ? '50ms' : '0ms',
+                    transitionDelay: '50ms',
                     [isMobile ? 'marginTop' : 'marginBottom']: isMobile ? '0' : '12px',
                     maxWidth: isMobile ? '90%' : 'auto',
-                    pointerEvents: activeNode === index ? 'auto' : 'none',
-                    display: activeNode === index ? 'block' : 'none'
+                    pointerEvents: 'auto',
+                    // For desktop, position each popup over its respective node
+                    ...((!isMobile && activeNode !== null) ? {
+                      position: 'absolute',
+                      bottom: '100%', 
+                      left: `${(100 / (milestones.length - 1)) * activeNode}%`,
+                      transform: 'translateX(-50%)'
+                    } : {})
                   }}
                 >
                   <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden popup-content"
@@ -183,29 +189,29 @@ const Hero = () => {
                     {/* Top section - Primary color */}
                     <div className="bg-primary p-3 sm:p-4">
                       {/* Title */}
-                      <h3 className="font-bold text-white text-sm sm:text-base mb-1">{milestone.title}</h3>
+                      <h3 className="font-bold text-white text-sm sm:text-base mb-1">{milestones[activeNode].title}</h3>
                       
                       {/* Description */}
-                      <p className="text-white/90 text-xs sm:text-sm mb-2">{milestone.description}</p>
+                      <p className="text-white/90 text-xs sm:text-sm mb-2">{milestones[activeNode].description}</p>
                     </div>
                     
                     {/* Verification section - White background */}
                     <div className="bg-white p-2 sm:p-3 flex flex-wrap items-center">
                       <div className="mr-2 flex-shrink-0">
-                        {React.cloneElement(milestone.verifierIcon, { className: "w-4 h-4 text-primary" })}
+                        {React.cloneElement(milestones[activeNode].verifierIcon, { className: "w-4 h-4 text-primary" })}
                       </div>
                       <div className="flex-grow min-w-0">
                         <p className="text-xs text-gray-500">Verified by:</p>
-                        <p className="text-xs sm:text-sm font-medium text-gray-700 truncate">{milestone.verifier}</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-700 truncate">{milestones[activeNode].verifier}</p>
                       </div>
-                      <div className="w-full sm:w-auto sm:ml-auto text-xs text-gray-400 mt-1 sm:mt-0">{milestone.date}</div>
+                      <div className="w-full sm:w-auto sm:ml-auto text-xs text-gray-400 mt-1 sm:mt-0">{milestones[activeNode].date}</div>
                     </div>
                     
                     {/* Triangle pointer - now white to match the bottom section */}
                     <div className={`absolute ${isMobile ? 'top-4 -left-2 translate-y-0 rotate-45' : 'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45'} w-3 h-3 bg-white`} />
                   </div>
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Timeline nodes */}
