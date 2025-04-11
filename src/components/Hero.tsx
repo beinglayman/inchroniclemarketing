@@ -207,15 +207,15 @@ const Hero = () => {
                       </div>
                       
                       {/* Verification section - White background */}
-                      <div className="bg-white p-2 sm:p-3 flex items-center">
-                        <div className="mr-2">
+                      <div className="bg-white p-2 sm:p-3 flex flex-wrap items-center">
+                        <div className="mr-2 flex-shrink-0">
                           {React.cloneElement(milestone.verifierIcon, { className: "w-4 h-4 text-primary" })}
                         </div>
-                        <div>
+                        <div className="flex-grow min-w-0">
                           <p className="text-xs text-gray-500">Verified by:</p>
-                          <p className="text-xs sm:text-sm font-medium text-gray-700">{milestone.verifier}</p>
+                          <p className="text-xs sm:text-sm font-medium text-gray-700 truncate">{milestone.verifier}</p>
                         </div>
-                        <div className="ml-auto text-xs text-gray-400">{milestone.date}</div>
+                        <div className="w-full sm:w-auto sm:ml-auto text-xs text-gray-400 mt-1 sm:mt-0">{milestone.date}</div>
                       </div>
                       
                       {/* Triangle pointer - now white to match the bottom section */}
