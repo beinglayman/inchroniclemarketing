@@ -112,7 +112,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative pt-16 md:pt-24 min-h-[100svh] flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6">
+    <div className="relative pt-16 md:pt-24 flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6">
       {/* Background embellishments */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
@@ -140,18 +140,19 @@ const Hero = () => {
             ref={timelineRef}
             className={`mt-8 sm:mt-12 md:mt-16 relative opacity-0 transition-all duration-1000 timeline-container ${isMobile ? 'timeline-mobile' : ''}`}
             aria-label="Career timeline visualization"
+            style={{ marginBottom: isMobile ? '3rem' : '2rem' }}
           >
             {/* Timeline line */}
             <div 
-              className={`absolute ${isMobile ? 'left-0 top-0 w-[3px] h-full' : 'top-1/2 left-0 w-full h-[3px] -translate-y-1/2'} bg-primary/30`} 
+              className={`absolute ${isMobile ? 'left-2 top-0 w-[3px] h-full' : 'top-1/2 left-0 w-full h-[3px] -translate-y-1/2'} bg-primary/30`} 
             />
             <div 
-              className={`absolute ${isMobile ? 'left-0 top-0 w-[3px] h-0' : 'top-1/2 left-0 w-0 h-[3px] -translate-y-1/2'} bg-primary timeline-line transition-all duration-1500 ease-out`} 
+              className={`absolute ${isMobile ? 'left-2 top-0 w-[3px] h-0' : 'top-1/2 left-0 w-0 h-[3px] -translate-y-1/2'} bg-primary timeline-line transition-all duration-1500 ease-out`} 
               style={{transitionDelay: '300ms'}}
             />
 
             {/* Timeline nodes */}
-            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-[400px] pl-4' : 'flex justify-between items-center px-4'}`}>
+            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-[380px] pl-10' : 'flex justify-between items-center px-4'}`}>
               {milestones.map((milestone, index) => (
                 <div
                   key={index}
@@ -177,7 +178,7 @@ const Hero = () => {
                   </div>
 
                   {/* Year label */}
-                  <div className={`absolute ${isMobile ? '-left-7 top-0' : '-top-8 left-1/2 transform -translate-x-1/2'} text-sm font-semibold text-primary`}>
+                  <div className={`absolute ${isMobile ? '-left-10 top-0' : '-top-8 left-1/2 transform -translate-x-1/2'} text-sm font-semibold text-primary`}>
                     {milestone.year}
                   </div>
 
@@ -188,10 +189,11 @@ const Hero = () => {
 
                   {/* Detailed popup */}
                   <div 
-                    className={`absolute ${isMobile ? 'left-8 -top-2 translate-y-0' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-20 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                    className={`absolute ${isMobile ? 'left-10 -top-2 translate-y-0' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-20 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
                     style={{
                       transitionDelay: activeNode === index ? '50ms' : '0ms',
-                      [isMobile ? 'marginLeft' : 'marginBottom']: isMobile ? '8px' : '6px'
+                      [isMobile ? 'marginLeft' : 'marginBottom']: isMobile ? '5px' : '6px',
+                      maxWidth: isMobile ? 'calc(100vw - 80px)' : 'auto'
                     }}
                   >
                     <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden">
@@ -280,7 +282,8 @@ const globalStyles = `
 }
 
 .timeline-mobile {
-  margin-left: 8px;
+  margin-left: 0;
+  padding-bottom: 2rem;
 }
 
 /* Fix mobile styling */
@@ -289,8 +292,18 @@ const globalStyles = `
     margin-top: 2rem;
   }
   
-  .milestone-node .absolute.left-8 {
+  .milestone-node .absolute.left-10 {
     left: 2.5rem;
+  }
+  
+  .milestone-node {
+    margin-bottom: 1.5rem;
+  }
+  
+  .timeline-container:after {
+    content: '';
+    display: block;
+    height: 4rem;
   }
 }
 `;
