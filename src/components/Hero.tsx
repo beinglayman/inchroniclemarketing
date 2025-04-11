@@ -116,7 +116,7 @@ const Hero = () => {
           {/* Timeline Section */}
           <div 
             ref={timelineRef}
-            className={`mt-12 sm:mt-16 md:mt-20 relative opacity-0 transition-all duration-1000 timeline-container ${isMobile ? 'timeline-mobile' : ''}`}
+            className={`mt-8 sm:mt-12 md:mt-16 relative opacity-0 transition-all duration-1000 timeline-container ${isMobile ? 'timeline-mobile' : ''}`}
             aria-label="Career timeline visualization"
           >
             {/* Timeline line */}
@@ -129,7 +129,7 @@ const Hero = () => {
             />
 
             {/* Timeline nodes */}
-            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-[500px] pl-8' : 'flex justify-between items-center px-4'}`}>
+            <div className={`relative ${isMobile ? 'flex flex-col justify-between h-[400px] pl-4' : 'flex justify-between items-center px-4'}`}>
               {milestones.map((milestone, index) => (
                 <div
                   key={index}
