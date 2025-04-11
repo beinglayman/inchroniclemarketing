@@ -111,7 +111,29 @@ const Hero = () => {
     }
   };
 
->
+  return (
+    <div className="relative pt-16 md:pt-24 min-h-[100svh] flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6">
+      {/* Background embellishments */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
+      
+      <div className="max-w-7xl mx-auto w-full py-8 sm:py-12 md:py-16">
+        <div className="text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in leading-tight">
+            <span className="inline-block animate-slide-up">Building Trust Through Your Work,</span>
+            <span className="inline-block animate-slide-up delay-100">Not CV</span>
+          </h1>
+          
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10 max-w-3xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
+            Document your professional journey as it happens - verified, validated, and vouched for!
+          </p>
+          
+          <button 
+            className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/20 animate-fade-in opacity-0"
+            style={{animationDelay: '600ms', animationFillMode: 'forwards'}}
+          >
+            InChronicle Your Professional Journey
+          </button>
 
           {/* Timeline Section */}
           <div 
@@ -258,7 +280,18 @@ const globalStyles = `
 }
 
 .timeline-mobile {
-  margin-left: 20px;
+  margin-left: 8px;
+}
+
+/* Fix mobile styling */
+@media (max-width: 640px) {
+  .timeline-container {
+    margin-top: 2rem;
+  }
+  
+  .milestone-node .absolute.left-8 {
+    left: 2.5rem;
+  }
 }
 `;
 
