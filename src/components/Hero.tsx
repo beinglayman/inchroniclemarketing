@@ -165,15 +165,17 @@ const Hero = () => {
             />
 
             {/* Popup Container - Moved outside the timeline nodes for better stacking */}
-            <div className="popup-container" style={{ position: 'relative', zIndex: 100 }}>
-              {milestones.map((milestone, index) => (
+            <div className="popup-container" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100, pointerEvents: 'none' }}>
+              {activeNode !== null && milestones.map((milestone, index) => (
                 <div 
                   key={`popup-${index}`}
-                  className={`popup-wrapper fixed md:absolute ${isMobile ? 'left-0 right-0 top-1/4 mx-auto' : 'bottom-full mb-12 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-50 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                  className={`popup-wrapper fixed md:absolute ${isMobile ? 'left-0 right-0 top-1/4 mx-auto' : 'bottom-full mb-12 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-50 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 hidden'}`}
                   style={{
                     transitionDelay: activeNode === index ? '50ms' : '0ms',
                     [isMobile ? 'marginTop' : 'marginBottom']: isMobile ? '0' : '12px',
-                    maxWidth: isMobile ? '90%' : 'auto'
+                    maxWidth: isMobile ? '90%' : 'auto',
+                    pointerEvents: activeNode === index ? 'auto' : 'none',
+                    display: activeNode === index ? 'block' : 'none'
                   }}
                 >
                   <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden popup-content"
@@ -334,6 +336,12 @@ const globalStyles = `
   pointer-events: auto;
 }
 
+/* Hide popups when not active */
+.popup-wrapper.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
 /* Ensure popups stay above other content */
 .popup-container {
   position: absolute;
@@ -342,6 +350,7 @@ const globalStyles = `
   right: 0;
   bottom: 0;
   pointer-events: none;
+  z-index: 100;
 }
 `;
 
