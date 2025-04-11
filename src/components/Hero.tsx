@@ -346,14 +346,14 @@ const Hero = () => {
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
       
-      <div className="max-w-7xl mx-auto w-full py-8 sm:py-12 md:py-16">
+      <div className="max-w-6xl mx-auto w-full py-8 sm:py-12 md:py-16">
         <div className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in leading-tight">
             <span className="inline-block animate-slide-up">Document Your Professional Journey</span>
             <span className="inline-block animate-slide-up delay-100">As It Happens</span>
           </h1>
           
-          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10 max-w-3xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
             Turn your daily work into a verified professional story that speaks for itself
           </p>
           
@@ -383,19 +383,18 @@ const Hero = () => {
             {/* Right side - InChronicle documentation */}
             <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
               <div className="relative bg-gray-100 p-3 border-b border-gray-200">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">IN</div>
-                    <span className="ml-2 font-bold text-gray-800 text-sm">CHRONICLE</span>
-                  </div>
-                  <div className="flex space-x-2">
-                    <div className="h-5 w-5 rounded-full bg-gray-200 flex items-center justify-center">
-                      <span className="text-xs">👤</span>
-                    </div>
-                    <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-xs">🔔</span>
-                    </div>
-                  </div>
+                <div className="text-center">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 1200 150" 
+                    id="desktop-logo"
+                    style={{ height: "32px", width: "auto", margin: "0 auto" }}
+                    className="h-8"
+                  >
+                    <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
+                    <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
+                    <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
+                  </svg>
                 </div>
               </div>
               
@@ -444,26 +443,105 @@ const Hero = () => {
                   </div>
                 </div>
                 
-                {/* Previous entries */}
-                <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
-                  <div className="flex justify-between items-start">
-                    <div className="font-medium text-sm">Created API documentation for partner integration</div>
-                    <div className="text-xs text-gray-500">10:15 AM</div>
-                  </div>
-                  <div className="mt-1 text-xs text-gray-600">
-                    Documented authentication flow and endpoints for our partner API using OpenAPI spec.
-                  </div>
-                </div>
+                {animationStep === 0 && (
+                  <>
+                    {/* Developer-specific previous entries */}
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Created API documentation for partner integration</div>
+                        <div className="text-xs text-gray-500">10:15 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Documented authentication flow and endpoints for our partner API using OpenAPI spec.
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Weekly team status report</div>
+                        <div className="text-xs text-gray-500">9:30 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Compiled and delivered progress updates for engineering team.
+                      </div>
+                    </div>
+                  </>
+                )}
                 
-                <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
-                  <div className="flex justify-between items-start">
-                    <div className="font-medium text-sm">Weekly team status report</div>
-                    <div className="text-xs text-gray-500">9:30 AM</div>
-                  </div>
-                  <div className="mt-1 text-xs text-gray-600">
-                    Compiled and delivered progress updates for engineering team.
-                  </div>
-                </div>
+                {animationStep === 1 && (
+                  <>
+                    {/* Financial Analyst previous entries */}
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Updated cash flow forecasting model</div>
+                        <div className="text-xs text-gray-500">10:15 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Implemented new variables for improved accuracy in Q3-Q4 projections.
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Budget variance analysis</div>
+                        <div className="text-xs text-gray-500">9:30 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Identified key factors contributing to 5% positive variance in Q2.
+                      </div>
+                    </div>
+                  </>
+                )}
+                
+                {animationStep === 2 && (
+                  <>
+                    {/* Marketing Specialist previous entries */}
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Social media campaign performance review</div>
+                        <div className="text-xs text-gray-500">10:15 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Analyzed engagement metrics across platforms and identified top-performing content.
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Content calendar update</div>
+                        <div className="text-xs text-gray-500">9:30 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Scheduled content for upcoming product launch and aligned with sales initiatives.
+                      </div>
+                    </div>
+                  </>
+                )}
+                
+                {animationStep === 3 && (
+                  <>
+                    {/* Account Executive previous entries */}
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Completed client proposal for TechCorp</div>
+                        <div className="text-xs text-gray-500">10:15 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Customized solution offering based on needs assessment and stakeholder feedback.
+                      </div>
+                    </div>
+                    
+                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
+                      <div className="flex justify-between items-start">
+                        <div className="font-medium text-sm">Quarterly pipeline review</div>
+                        <div className="text-xs text-gray-500">9:30 AM</div>
+                      </div>
+                      <div className="mt-1 text-xs text-gray-600">
+                        Updated opportunity values and adjusted forecast based on recent client meetings.
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -478,25 +556,19 @@ const Hero = () => {
             </button>
           </div>
           
-          {/* Trust indicators */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
-            <div className="flex items-center bg-white px-3 py-2 rounded-full shadow">
-              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-2">
+          {/* Trust indicators - simplified */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
+            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow">
+              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2">
                 <Clock className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-xs font-medium">Real-time Documentation</span>
+              <span className="text-sm font-medium">Real-time Documentation</span>
             </div>
-            <div className="flex items-center bg-white px-3 py-2 rounded-full shadow">
-              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-2">
+            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow">
+              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2">
                 <Check className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-xs font-medium">Peer-Validated</span>
-            </div>
-            <div className="flex items-center bg-white px-3 py-2 rounded-full shadow">
-              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mr-2">
-                <Lock className="w-3 h-3 text-primary" />
-              </div>
-              <span className="text-xs font-medium">Tamper-Proof</span>
+              <span className="text-sm font-medium">Peer-Validated</span>
             </div>
           </div>
         </div>
