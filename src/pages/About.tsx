@@ -34,43 +34,43 @@ const About = () => {
     {
       name: "Honey Arora",
       role: "Founder",
-      bio: "17+ years in Software development, Product management, and Management consulting roles. \n Ex EY, Ex Infoedge. \n MBA - IIM Ahmedabad",
+      bio: "17+ years in Software development, Product management, and Management consulting roles.<br />Ex EY, Ex Infoedge.<br />MBA - IIM Ahmedabad",
       image: "/img/honey.jpeg"
     },
     {
       name: "Ashish Gupta",
       role: "Co-Founder",
-      bio: "14+ years in software development and product management roles. \n Ex FinancePeer, Ex ICICI \n MBA - IIM Ahmedabad",
+      bio: "14+ years in software development and product management roles.<br />Ex FinancePeer, Ex ICICI<br />MBA - IIM Ahmedabad",
       image: "/img/ashish.jpeg"
     },
     {
       name: "Pawan Kumar Yadav",
       role: "Head of Technology",
-      bio: "14+ years in software development and product management roles. \n Ex Uber, Ex Microsoft",
+      bio: "14+ years in software development and product management roles.<br />Ex Uber, Ex Microsoft",
       image: "/img/pawan.jpeg"
     },
     {
       name: "Anshuman Kumar",
       role: "Head of Data Science and AI",
-      bio: "5+ Years in data science and AI Development. \n Ex Deloitte, Ex Meta",
+      bio: "5+ Years in data science and AI Development.<br />Ex Deloitte, Ex Meta",
       image: "/img/anshuman.jpeg"
     }
   ];
 
   return (
     <div className="min-h-screen pt-16 bg-gradient-to-b from-primary/5 via-white to-primary/5">
-      {/* Hero Section with Improved Visual Appeal */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary-dark text-white relative overflow-hidden">
+      {/* Hero Section with Reduced Height */}
+      <section className="py-12 bg-gradient-to-r from-primary to-primary-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -ml-32 -mt-32"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mb-48"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 leading-tight">About InChronicle</h1>
-          <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 leading-tight">About InChronicle</h1>
+          <p className="text-lg md:text-xl text-center text-white/90 max-w-3xl mx-auto">
             Rebuilding trust in professional credentials through real-time verification
           </p>
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-6">
             <div className="bg-white/20 backdrop-blur-sm py-2 px-6 rounded-full text-white text-sm font-medium tracking-wider">
               TRUTH • COLLABORATION • GROWTH
             </div>
@@ -138,7 +138,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section with Enhanced Card Design */}
+      {/* Values Section with Neatly Organized 5 Widgets */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mb-8">
@@ -147,19 +147,38 @@ const About = () => {
             <div className="h-px w-12 bg-primary/30"></div>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Our Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => {
+          
+          {/* Neatly organized 5 widgets layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* First row with 3 cards */}
+            {values.slice(0, 3).map((value, index) => {
               const Icon = value.icon;
               return (
-                <div key={index} className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                  <div className="bg-primary/10 p-4 rounded-full w-fit mb-6">
+                <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                  <div className="bg-primary/10 p-4 rounded-full w-fit mb-4">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">{value.description}</p>
                 </div>
               );
             })}
+            
+            {/* Second row with 2 cards centered */}
+            <div className="md:col-span-3 flex flex-col md:flex-row justify-center gap-8 mt-2">
+              {values.slice(3, 5).map((value, index) => {
+                const Icon = value.icon;
+                return (
+                  <div key={index + 3} className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 md:w-1/3">
+                    <div className="bg-primary/10 p-4 rounded-full w-fit mb-4">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">{value.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">{value.description}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -189,9 +208,7 @@ const About = () => {
                     <p className="text-primary font-medium">{member.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
-                  {member.bio}
-                </p>
+                <p className="text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: member.bio }}></p>
               </div>
             ))}
           </div>
