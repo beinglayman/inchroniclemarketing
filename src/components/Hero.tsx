@@ -281,11 +281,10 @@ const Hero = () => {
     }
   ];
   
-  // Validation responses
+  // Simple validation responses
   const validations = [
-    { name: "Sarah Chen", role: "Team Lead", message: "Confirmed ✓" },
-    { name: "Miguel Rodriguez", role: "Product Manager", message: "Verified ✓" },
-    { name: "Priya Sharma", role: "CTO", message: "Endorsed ✓" }
+    { name: "Sarah Chen", role: "Team Lead", message: "Verified" },
+    { name: "Miguel R.", role: "Manager", message: "Confirmed" },
   ];
 
   // Handle responsive layout
@@ -346,19 +345,19 @@ const Hero = () => {
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
       
-      <div className="max-w-6xl mx-auto w-full py-8 sm:py-12 md:py-16">
+      <div className="max-w-6xl mx-auto w-full py-12 sm:py-16 md:py-20">
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 animate-fade-in leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 animate-fade-in leading-tight">
             <span className="inline-block animate-slide-up">Document Your Professional Journey</span>
             <span className="inline-block animate-slide-up delay-100">As It Happens</span>
           </h1>
           
-          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-10 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
-            Turn your daily work into a verified professional story that speaks for itself
+          <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
+            Turn your daily work into a verified professional story
           </p>
           
           {/* Split Screen Visualization */}
-          <div className="flex flex-col md:flex-row gap-6 mb-8 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
+          <div className="flex flex-col md:flex-row gap-8 mb-12 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
             {/* Left side - Professional work happening */}
             <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
               <div className="relative bg-gray-100 p-3 border-b border-gray-200">
@@ -399,20 +398,20 @@ const Hero = () => {
               </div>
               
               <div className="p-4 h-[300px] sm:h-[350px] overflow-auto">
-                <div className="text-xs font-medium text-primary mb-2">Today's Chronicle</div>
+                <div className="text-xs font-medium text-primary mb-3">Today's Chronicle</div>
                 
-                {/* Entry that appears to be written in real-time */}
+                {/* Single entry that appears to be written in real-time */}
                 <div className="border-l-4 border-primary pl-3 pb-3 mb-3">
-                  <div className="flex justify-between items-start">
+                  <div className="flex justify-between items-start mb-3">
                     <div className="font-medium text-sm">{workActivities[animationStep].title}</div>
                     <div className="text-xs text-gray-500">{new Date().toLocaleTimeString()}</div>
                   </div>
                   
-                  <div className="mt-2 text-xs text-gray-600">
+                  <div className="mt-3 text-xs text-gray-600">
                     {workActivities[animationStep].description}
                   </div>
                   
-                  <div className="mt-2 flex flex-wrap items-center">
+                  <div className="mt-4 flex flex-wrap items-center">
                     <div className="text-xs font-medium text-primary mr-2">Skills:</div>
                     <div className="flex flex-wrap gap-1">
                       {workActivities[animationStep].skills.map((skill, idx) => (
@@ -422,11 +421,11 @@ const Hero = () => {
                   </div>
                   
                   {/* Validation requests and responses */}
-                  <div className={`mt-3 ${animationStep > 0 ? "" : "opacity-0"}`}>
-                    <div className="text-xs font-medium text-primary mb-1">Validation Requests:</div>
+                  <div className={`mt-4 ${animationStep > 0 ? "" : "opacity-0"}`}>
+                    <div className="text-xs font-medium text-primary mb-2">Validation Requests:</div>
                     <div className="flex flex-col gap-2">
                       {validations.slice(0, animationStep).map((validation, index) => (
-                        <div key={index} className="flex justify-between items-center bg-green-50 px-2 py-1 rounded">
+                        <div key={index} className="flex justify-between items-center bg-green-50 px-3 py-2 rounded">
                           <div className="flex items-center">
                             <div className="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-xs mr-2">
                               {validation.name.charAt(0)}
@@ -442,122 +441,22 @@ const Hero = () => {
                     </div>
                   </div>
                 </div>
-                
-                {animationStep === 0 && (
-                  <>
-                    {/* Developer-specific previous entries */}
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Created API documentation for partner integration</div>
-                        <div className="text-xs text-gray-500">10:15 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Documented authentication flow and endpoints for our partner API using OpenAPI spec.
-                      </div>
-                    </div>
-                    
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Weekly team status report</div>
-                        <div className="text-xs text-gray-500">9:30 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Compiled and delivered progress updates for engineering team.
-                      </div>
-                    </div>
-                  </>
-                )}
-                
-                {animationStep === 1 && (
-                  <>
-                    {/* Financial Analyst previous entries */}
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Updated cash flow forecasting model</div>
-                        <div className="text-xs text-gray-500">10:15 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Implemented new variables for improved accuracy in Q3-Q4 projections.
-                      </div>
-                    </div>
-                    
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Budget variance analysis</div>
-                        <div className="text-xs text-gray-500">9:30 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Identified key factors contributing to 5% positive variance in Q2.
-                      </div>
-                    </div>
-                  </>
-                )}
-                
-                {animationStep === 2 && (
-                  <>
-                    {/* Marketing Specialist previous entries */}
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Social media campaign performance review</div>
-                        <div className="text-xs text-gray-500">10:15 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Analyzed engagement metrics across platforms and identified top-performing content.
-                      </div>
-                    </div>
-                    
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Content calendar update</div>
-                        <div className="text-xs text-gray-500">9:30 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Scheduled content for upcoming product launch and aligned with sales initiatives.
-                      </div>
-                    </div>
-                  </>
-                )}
-                
-                {animationStep === 3 && (
-                  <>
-                    {/* Account Executive previous entries */}
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 mb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Completed client proposal for TechCorp</div>
-                        <div className="text-xs text-gray-500">10:15 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Customized solution offering based on needs assessment and stakeholder feedback.
-                      </div>
-                    </div>
-                    
-                    <div className="border-l-4 border-gray-300 pl-3 pb-3 opacity-50">
-                      <div className="flex justify-between items-start">
-                        <div className="font-medium text-sm">Quarterly pipeline review</div>
-                        <div className="text-xs text-gray-500">9:30 AM</div>
-                      </div>
-                      <div className="mt-1 text-xs text-gray-600">
-                        Updated opportunity values and adjusted forecast based on recent client meetings.
-                      </div>
-                    </div>
-                  </>
-                )}
               </div>
             </div>
           </div>
           
           {/* CTA Section */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in opacity-0" style={{animationDelay: '700ms', animationFillMode: 'forwards'}}>
-            <button className="px-6 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in opacity-0" style={{animationDelay: '700ms', animationFillMode: 'forwards'}}>
+            <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg">
               Start Your Chronicle
             </button>
-            <button className="px-6 py-3 bg-white text-primary font-bold rounded-md border-2 border-primary hover:bg-primary/5 transition-colors w-full sm:w-auto">
-              Watch How It Works
+            <button className="px-8 py-3 bg-white text-primary font-bold rounded-md border-2 border-primary hover:bg-primary/5 transition-colors w-full sm:w-auto text-lg">
+              Watch Demo
             </button>
           </div>
           
           {/* Trust indicators - simplified */}
-          <div className="mt-8 flex flex-wrap justify-center gap-4 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
+          <div className="mt-10 flex flex-wrap justify-center gap-8 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
             <div className="flex items-center bg-white px-4 py-2 rounded-md shadow">
               <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2">
                 <Clock className="w-3 h-3 text-primary" />
