@@ -94,6 +94,19 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (activeNode !== null && !event.target.closest('.milestone-node') && !event.target.closest('.popup-content')) {
+        setActiveNode(null);
+      }
+    };
+    
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [activeNode]);
+
   // Handle keyboard navigation for accessibility
   const handleKeyDown = (e, index) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -112,7 +125,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative pt-16 md:pt-24 flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6">
+    <div className="relative pt-16 md:pt-24 flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6" onClick={() => activeNode !== null && setActiveNode(null)}>
       {/* Background embellishments */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
@@ -162,7 +175,10 @@ const Hero = () => {
                   role="button"
                   aria-expanded={activeNode === index}
                   aria-label={`${milestone.year}: ${milestone.title}`}
-                  onClick={() => setActiveNode(activeNode === index ? null : index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveNode(activeNode === index ? null : index);
+                  }}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   onFocus={() => setActiveNode(index)}
                   onMouseEnter={() => setActiveNode(index)}
@@ -189,14 +205,15 @@ const Hero = () => {
 
                   {/* Detailed popup */}
                   <div 
-                    className={`absolute ${isMobile ? 'left-10 -top-2 translate-y-0' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-20 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+                    className={`fixed md:absolute ${isMobile ? 'left-0 right-0 top-1/4 mx-auto' : 'bottom-full mb-6 left-1/2 transform -translate-x-1/2'} transition-all duration-300 z-50 ${activeNode === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
                     style={{
                       transitionDelay: activeNode === index ? '50ms' : '0ms',
-                      [isMobile ? 'marginLeft' : 'marginBottom']: isMobile ? '5px' : '6px',
-                      maxWidth: isMobile ? 'calc(100vw - 80px)' : 'auto'
+                      [isMobile ? 'marginTop' : 'marginBottom']: isMobile ? '0' : '6px',
+                      maxWidth: isMobile ? '90%' : 'auto'
                     }}
                   >
-                    <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden">
+                    <div className="rounded-lg shadow-xl text-left min-w-[200px] max-w-[250px] sm:min-w-[250px] sm:max-w-[300px] transform transition-transform duration-300 hover:scale-105 overflow-hidden popup-content"
+                    onClick={(e) => e.stopPropagation()}>
                       {/* Top section - Primary color */}
                       <div className="bg-primary p-3 sm:p-4">
                         {/* Title */}
