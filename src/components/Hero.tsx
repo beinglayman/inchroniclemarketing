@@ -12,103 +12,272 @@ const Hero = () => {
       title: "Optimized database query response time by 40%",
       description: "Used indexing strategy and query caching to improve database performance for our customer dashboard. Reduced average query time from 170ms to 102ms.",
       skills: ["SQL Optimization", "Database Indexing", "Performance Tuning"],
-      code: `// Working on database optimization
-function optimizeQuery(params) {
-  const result = [];
-  const query = buildOptimizedQuery(params);
-  // Performance improvement logic
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].matches(query)) {
-      result.push(data[i]);
-    }
-  }
-  return result;
-}
-// Testing response time
-const startTime = performance.now();
-const results = optimizeQuery(testParams);
-const endTime = performance.now();
-// Time: ${10 + animationStep * 5}ms (40% faster than previous)
-`
+      profession: "Software Developer",
+      workContent: (
+        <div className="h-full flex flex-col bg-white">
+          <div className="flex items-center bg-gray-100 px-3 py-2 border-b border-gray-200">
+            <div className="h-3 w-3 bg-red-500 rounded-full mr-1"></div>
+            <div className="h-3 w-3 bg-yellow-500 rounded-full mr-1"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full mr-1"></div>
+            <div className="ml-2 text-xs font-medium">Database Performance Dashboard</div>
+          </div>
+          <div className="flex-1 p-3 overflow-auto">
+            <div className="text-xs font-medium mb-2">Query Performance Metrics</div>
+            <div className="h-32 bg-gray-50 rounded border border-gray-200 p-2 mb-3">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-xs">Customer Dashboard Query:</span>
+                <span className="text-xs font-medium text-green-600">-40% Response Time</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div className="bg-green-500 h-2 rounded-full" style={{width: `${60 + animationStep * 10}%`}}></div>
+              </div>
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>Before: 170ms</span>
+                <span>After: 102ms</span>
+              </div>
+              <div className="mt-3 text-xs text-gray-700">
+                <div className="flex justify-between mb-1">
+                  <span>Query Cache Hit Rate:</span>
+                  <span className="font-medium">{85 + animationStep}%</span>
+                </div>
+                <div className="flex justify-between mb-1">
+                  <span>Index Utilization:</span>
+                  <span className="font-medium">{90 + animationStep * 2}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Server CPU Load:</span>
+                  <span className="font-medium text-green-600">{30 - animationStep * 5}%</span>
+                </div>
+              </div>
+            </div>
+            <div className="text-xs font-medium mb-1">Optimization Summary</div>
+            <div className="text-xs text-gray-600 mb-2">
+              ✓ Added composite index for frequently queried columns<br/>
+              ✓ Implemented query result caching with 10-minute TTL<br/>
+              ✓ Refactored joins to reduce table scans<br/>
+              {animationStep > 1 && "✓ Deployed to production environment"}
+            </div>
+            {animationStep > 2 && (
+              <div className="text-xs bg-green-100 text-green-800 p-2 rounded border border-green-200">
+                All performance tests passed. Changes deployed successfully.
+              </div>
+            )}
+          </div>
+        </div>
+      )
     },
     {
-      title: "Led cross-functional team meeting for new product launch",
-      description: "Facilitated discussion between design, engineering, and marketing to align on launch timeline and feature priorities for Q2 product release.",
-      skills: ["Team Leadership", "Product Strategy", "Cross-functional Coordination"],
-      code: `// Product roadmap planning
-class ProductLaunch {
-  constructor(teams, timeline) {
-    this.teams = teams;
-    this.timeline = timeline;
-    this.milestones = [];
-    this.risks = [];
-  }
-  
-  addMilestone(date, description, owner) {
-    this.milestones.push({ date, description, owner });
-  }
-  
-  identifyRisks() {
-    // Risk assessment logic
-    return this.teams.map(team => ({
-      team: team.name,
-      risks: this.assessRisks(team)
-    }));
-  }
-}
-// New launch plan created with 4 teams`
+      title: "Presented quarterly financial analysis to executive team",
+      description: "Delivered comprehensive financial review highlighting 15% revenue growth, cost-saving initiatives, and updated projections for upcoming quarters.",
+      skills: ["Financial Analysis", "Executive Communication", "Data Visualization"],
+      profession: "Financial Analyst",
+      workContent: (
+        <div className="h-full flex flex-col bg-white">
+          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
+            <div className="text-xs font-medium">Q2 Financial Analysis.pptx</div>
+            <div className="text-xs text-gray-500">Slide 4 of 12</div>
+          </div>
+          <div className="flex-1 p-3 overflow-auto bg-blue-50">
+            <div className="bg-white rounded shadow-sm p-2 mb-2">
+              <div className="text-center text-sm font-bold text-blue-800 mb-2">Q2 Revenue Growth: +15%</div>
+              <div className="h-28 flex items-end justify-between px-2">
+                {['Q1', 'Q2', 'Q3 (Proj)', 'Q4 (Proj)'].map((quarter, i) => (
+                  <div key={i} className="flex flex-col items-center">
+                    <div className="w-12 bg-blue-500 rounded-t" style={{
+                      height: i === 0 ? '60px' : 
+                             i === 1 ? '90px' : 
+                             i === 2 ? `${80 + animationStep * 5}px` : 
+                             `${70 + animationStep * 7}px`
+                    }}></div>
+                    <div className="text-xs mt-1">{quarter}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2 mb-3">
+              <div className="bg-white rounded shadow-sm p-2 flex-1">
+                <div className="text-xs font-medium text-blue-800 mb-1">Cost Reduction</div>
+                <div className="text-lg font-bold text-green-600">-8.5%</div>
+                <div className="text-xs text-gray-500">Year-over-Year</div>
+              </div>
+              <div className="bg-white rounded shadow-sm p-2 flex-1">
+                <div className="text-xs font-medium text-blue-800 mb-1">Profit Margin</div>
+                <div className="text-lg font-bold">{22 + animationStep}%</div>
+                <div className="text-xs text-gray-500">+3% from Q1</div>
+              </div>
+            </div>
+            <div className="bg-white rounded shadow-sm p-2">
+              <div className="text-xs font-medium text-blue-800 mb-1">Key Insights</div>
+              <ul className="text-xs text-gray-700 list-disc pl-4">
+                <li>New product line contributed 18% of Q2 revenue</li>
+                <li>International markets grew by 24%</li>
+                {animationStep > 1 && <li>Digital initiative reduced operational costs by 12%</li>}
+                {animationStep > 2 && <li>Updated Q3 forecast shows additional 5% growth potential</li>}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Resolved critical customer support ticket within SLA",
-      description: "Identified root cause of payment processing error affecting enterprise customer. Implemented fix and verified solution with customer within 4 hours of ticket creation.",
-      skills: ["Problem Solving", "Customer Support", "Debugging"],
-      code: `// Debugging payment processing issue
-async function troubleshootPayment(transactionId) {
-  console.log("Investigating failed transaction:", transactionId);
-  
-  // Trace transaction flow
-  const transaction = await getTransactionDetails(transactionId);
-  const paymentLogs = await getPaymentLogs(transaction.paymentId);
-  
-  // Identify failure point
-  const errorPoint = findErrorInLogs(paymentLogs);
-  console.log("Error identified:", errorPoint);
-  
-  // Apply fix based on error type
-  const fix = determineFixStrategy(errorPoint);
-  const result = await applyFix(transaction.paymentId, fix);
-  
-  return { fixed: result.success, solution: fix.description };
-}`
+      title: "Designed and executed A/B test for landing page redesign",
+      description: "Created two variant designs and implemented testing strategy that led to 28% improvement in conversion rate for our product signup process.",
+      skills: ["A/B Testing", "UX Design", "Conversion Optimization"],
+      profession: "Marketing Specialist",
+      workContent: (
+        <div className="h-full flex flex-col bg-white">
+          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
+            <div className="text-xs font-medium">A/B Test Results - Landing Page</div>
+            <div className="flex items-center">
+              <div className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Live Test Running</div>
+            </div>
+          </div>
+          <div className="flex-1 overflow-auto bg-gray-50 p-2">
+            <div className="flex gap-2 mb-3">
+              <div className="flex-1 bg-white border border-gray-200 rounded p-2">
+                <div className="text-xs text-gray-500 mb-1">Variant A (Control)</div>
+                <div className="h-24 bg-gray-100 rounded relative mb-2">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 h-10 bg-gray-300 rounded mb-1"></div>
+                      <div className="w-16 h-2 bg-gray-300 rounded mb-1"></div>
+                      <div className="w-12 h-2 bg-gray-300 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-xs mb-2">
+                  <div className="flex justify-between mb-1">
+                    <span>Visitors:</span>
+                    <span className="font-medium">2,458</span>
+                  </div>
+                  <div className="flex justify-between mb-1">
+                    <span>Sign-ups:</span>
+                    <span className="font-medium">344</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Conversion:</span>
+                    <span className="font-medium">14%</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 bg-white border border-green-200 rounded p-2 shadow-sm">
+                <div className="text-xs text-green-600 font-medium mb-1">Variant B (Winner)</div>
+                <div className="h-24 bg-green-50 rounded relative mb-2">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 bg-green-200 rounded-full mb-1"></div>
+                      <div className="w-20 h-2 bg-green-300 rounded mb-1"></div>
+                      <div className="w-16 h-4 bg-green-400 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-xs mb-2">
+                  <div className="flex justify-between mb-1">
+                    <span>Visitors:</span>
+                    <span className="font-medium">2,412</span>
+                  </div>
+                  <div className="flex justify-between mb-1">
+                    <span>Sign-ups:</span>
+                    <span className="font-medium">{432 + animationStep * 10}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Conversion:</span>
+                    <span className="font-medium text-green-600">{18 + animationStep * 2}%</span>
+                  </div>
+                </div>
+                {animationStep > 1 && (
+                  <div className="text-xs bg-green-100 text-green-800 p-1 rounded text-center">
+                    +{28 + animationStep}% improvement
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="bg-white border border-gray-200 rounded p-2">
+              <div className="text-xs font-medium mb-1">Key Findings</div>
+              <ul className="text-xs text-gray-700 list-disc pl-4">
+                <li>Simplified form with fewer fields improved completion rate</li>
+                <li>Social proof elements increased trust signals</li>
+                {animationStep > 1 && <li>Clear call-to-action button increased click rate by 45%</li>}
+                {animationStep > 2 && <li>Statistical significance achieved at 99% confidence</li>}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      title: "Completed wireframes for mobile app redesign",
-      description: "Delivered final wireframes for mobile app redesign based on user testing feedback. Focused on improving navigation flow and accessibility.",
-      skills: ["UI Design", "Wireframing", "User Experience"],
-      code: `/* Mobile app redesign
- * Component: Navigation Menu
- */
-class NavigationMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false,
-      activeItem: 'dashboard',
-      accessibilityEnabled: true
-    };
-  }
-  
-  render() {
-    // New navigation structure with improved a11y
-    return (
-      <nav className="mobile-nav" aria-label="Main Navigation">
-        <ul role="menubar">
-          {this.renderMenuItems()}
-        </ul>
-      </nav>
-    );
-  }
-}`
+      title: "Led successful negotiation of major client contract renewal",
+      description: "Secured 3-year contract extension with 12% increased value while maintaining service level commitments and building stronger client relationship.",
+      skills: ["Negotiation", "Client Management", "Contract Strategy"],
+      profession: "Account Executive",
+      workContent: (
+        <div className="h-full flex flex-col bg-white">
+          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
+            <div className="text-xs font-medium">Client Meeting Notes</div>
+            <div className="text-xs text-gray-500">Global Enterprises Inc.</div>
+          </div>
+          <div className="flex-1 p-3 overflow-auto">
+            <div className="flex items-center mb-3">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-xs mr-2">GE</div>
+              <div>
+                <div className="text-xs font-medium">Contract Renewal Discussion</div>
+                <div className="text-xs text-gray-500">with Sarah Chen (CTO) and Financial Team</div>
+              </div>
+            </div>
+            
+            <div className="mb-3">
+              <div className="text-xs font-medium mb-1">Contract Progress</div>
+              <div className="w-full h-2 bg-gray-200 rounded-full mb-1">
+                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${25 + animationStep * 25}%`}}></div>
+              </div>
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>Initial Proposal</span>
+                <span>Terms Negotiation</span>
+                <span>Final</span>
+              </div>
+            </div>
+            
+            <div className="text-xs border border-gray-200 rounded p-2 mb-3">
+              <div className="font-medium mb-1">Key Terms</div>
+              <table className="w-full text-xs">
+                <tbody>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-1">Duration:</td>
+                    <td className="py-1 font-medium">3 Years</td>
+                    <td className="py-1 text-green-600">(+1 year)</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-1">Contract Value:</td>
+                    <td className="py-1 font-medium">${1.45 + animationStep * 0.05}M</td>
+                    <td className="py-1 text-green-600">(+12%)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-1">Service Level:</td>
+                    <td className="py-1 font-medium">Premium</td>
+                    <td className="py-1 text-blue-600">(Maintained)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="text-xs mb-3">
+              <div className="font-medium mb-1">Discussion Notes</div>
+              <ul className="list-disc pl-4 text-gray-600">
+                <li>Addressed concerns about implementation timeline</li>
+                <li>Proposed quarterly business reviews for better alignment</li>
+                {animationStep > 1 && <li>Offered additional training sessions for new team members</li>}
+                {animationStep > 2 && <li>Secured verbal commitment pending final legal review</li>}
+              </ul>
+            </div>
+            
+            {animationStep > 2 && (
+              <div className="bg-green-100 text-green-800 p-2 text-xs rounded border border-green-200">
+                Contract draft sent to legal for final review. Client has indicated intent to sign by end of week.
+              </div>
+            )}
+          </div>
+        </div>
+      )
     }
   ];
   
@@ -190,27 +359,16 @@ class NavigationMenu extends Component {
           
           {/* Split Screen Visualization */}
           <div className="flex flex-col md:flex-row gap-6 mb-8 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
-            {/* Left side - Work happening */}
+            {/* Left side - Professional work happening */}
             <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
               <div className="relative bg-gray-100 p-3 border-b border-gray-200">
-                <div className="absolute top-3 left-3 flex items-center">
-                  <div className="h-3 w-3 bg-red-500 rounded-full mr-1"></div>
-                  <div className="h-3 w-3 bg-yellow-500 rounded-full mr-1"></div>
-                  <div className="h-3 w-3 bg-green-500 rounded-full"></div>
-                </div>
-                <h3 className="text-center text-base font-semibold text-gray-700 mt-1">Professional at Work</h3>
+                <h3 className="text-center text-base font-semibold text-gray-700">
+                  {workActivities[animationStep].profession} at Work
+                </h3>
               </div>
               
-              <div className="p-4 h-[300px] sm:h-[350px] overflow-hidden">
-                {/* Code editor mockup */}
-                <div className="h-full bg-gray-900 rounded-md p-4 font-mono text-xs sm:text-sm text-green-400 overflow-auto">
-                  <pre className="whitespace-pre-wrap">
-                    {workActivities[animationStep].code}
-                  </pre>
-                  <div className={`mt-2 ${animationStep >= 2 ? "bg-green-900 text-white p-1 rounded inline-block" : "hidden"}`}>
-                    Task completed successfully ✓
-                  </div>
-                </div>
+              <div className="h-[300px] sm:h-[350px] overflow-hidden">
+                {workActivities[animationStep].workContent}
               </div>
               
               <div className="px-4 pb-4 flex items-center justify-between">
