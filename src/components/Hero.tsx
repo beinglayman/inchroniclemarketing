@@ -12,6 +12,11 @@ const Hero = () => {
       title: "Optimized database query response time by 40%",
       description: "Used indexing strategy and query caching to improve database performance for our customer dashboard. Reduced average query time from 170ms to 102ms.",
       skills: ["SQL Optimization", "Database Indexing", "Performance Tuning"],
+      domains: ["Backend Development", "Database Architecture"],
+      achievements: "Improved system performance metrics by 40%, exceeding quarterly goal of 25%",
+      impact: "Reduced page load time for 15,000+ daily users, decreasing bounce rate by 12%",
+      collaborators: ["Backend Team", "DevOps"],
+      stakeholders: ["Product Manager", "CTO", "Customer Success"],
       profession: "Software Developer",
       workContent: (
         <div className="h-full flex flex-col bg-white">
@@ -70,6 +75,11 @@ const Hero = () => {
       title: "Presented quarterly financial analysis to executive team",
       description: "Delivered comprehensive financial review highlighting 15% revenue growth, cost-saving initiatives, and updated projections for upcoming quarters.",
       skills: ["Financial Analysis", "Executive Communication", "Data Visualization"],
+      domains: ["Corporate Finance", "Strategic Planning"],
+      achievements: "Received executive approval for all proposed financial strategies and Q3 budget allocation",
+      impact: "Identified $2.4M in cost-saving opportunities while supporting 15% projected growth",
+      collaborators: ["Finance Team", "Business Intelligence"],
+      stakeholders: ["CEO", "Executive Board", "Department Heads"],
       profession: "Financial Analyst",
       workContent: (
         <div className="h-full flex flex-col bg-white">
@@ -123,6 +133,11 @@ const Hero = () => {
       title: "Designed and executed A/B test for landing page redesign",
       description: "Created two variant designs and implemented testing strategy that led to 28% improvement in conversion rate for our product signup process.",
       skills: ["A/B Testing", "UX Design", "Conversion Optimization"],
+      domains: ["Digital Marketing", "User Experience"],
+      achievements: "Delivered 28% conversion improvement, setting new department benchmark",
+      impact: "Increased qualified leads by 45%, translating to estimated $380K annual revenue",
+      collaborators: ["Design Team", "Web Development", "Analytics"],
+      stakeholders: ["CMO", "Growth Team", "Sales Leadership"],
       profession: "Marketing Specialist",
       workContent: (
         <div className="h-full flex flex-col bg-white">
@@ -209,6 +224,11 @@ const Hero = () => {
       title: "Led successful negotiation of major client contract renewal",
       description: "Secured 3-year contract extension with 12% increased value while maintaining service level commitments and building stronger client relationship.",
       skills: ["Negotiation", "Client Management", "Contract Strategy"],
+      domains: ["Sales", "Account Management"],
+      achievements: "Closed largest renewal of the quarter at 12% higher value than original contract",
+      impact: "Secured $1.7M in guaranteed revenue with potential for 25% expansion in year 2",
+      collaborators: ["Legal Team", "Implementation Specialists", "Finance"],
+      stakeholders: ["Client CTO", "Client Procurement", "VP of Sales"],
       profession: "Account Executive",
       workContent: (
         <div className="h-full flex flex-col bg-white">
@@ -228,6 +248,58 @@ const Hero = () => {
             <div className="mb-3">
               <div className="text-xs font-medium mb-1">Contract Progress</div>
               <div className="w-full h-2 bg-gray-200 rounded-full mb-1">
+                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${25 + animationStep * 25}%`}}></div>
+              </div>
+              <div className="flex justify-between text-xs text-gray-500">
+                <span>Initial Proposal</span>
+                <span>Terms Negotiation</span>
+                <span>Final</span>
+              </div>
+            </div>
+            
+            <div className="text-xs border border-gray-200 rounded p-2 mb-3">
+              <div className="font-medium mb-1">Key Terms</div>
+              <table className="w-full text-xs">
+                <tbody>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-1">Duration:</td>
+                    <td className="py-1 font-medium">3 Years</td>
+                    <td className="py-1 text-green-600">(+1 year)</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-1">Contract Value:</td>
+                    <td className="py-1 font-medium">${1.45 + animationStep * 0.05}M</td>
+                    <td className="py-1 text-green-600">(+12%)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-1">Service Level:</td>
+                    <td className="py-1 font-medium">Premium</td>
+                    <td className="py-1 text-blue-600">(Maintained)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="text-xs mb-3">
+              <div className="font-medium mb-1">Discussion Notes</div>
+              <ul className="list-disc pl-4 text-gray-600">
+                <li>Addressed concerns about implementation timeline</li>
+                <li>Proposed quarterly business reviews for better alignment</li>
+                {animationStep > 1 && <li>Offered additional training sessions for new team members</li>}
+                {animationStep > 2 && <li>Secured verbal commitment pending final legal review</li>}
+              </ul>
+            </div>
+            
+            {animationStep > 2 && (
+              <div className="bg-green-100 text-green-800 p-2 text-xs rounded border border-green-200">
+                Contract draft sent to legal for final review. Client has indicated intent to sign by end of week.
+              </div>
+            )}
+          </div>
+        </div>
+      )
+    }
+  ];-2 bg-gray-200 rounded-full mb-1">
                 <div className="bg-blue-500 h-2 rounded-full" style={{width: `${25 + animationStep * 25}%`}}></div>
               </div>
               <div className="flex justify-between text-xs text-gray-500">
@@ -400,22 +472,71 @@ const Hero = () => {
               <div className="p-4 h-[300px] sm:h-[350px] overflow-auto">
                 <div className="text-xs font-medium text-primary mb-3">Today's Chronicle</div>
                 
-                {/* Single entry that appears to be written in real-time */}
-                <div className="border-l-4 border-primary pl-3 pb-3 mb-3">
+                {/* Enhanced chronicle entry with all requested elements */}
+                <div className="border-l-4 border-primary pl-3 pb-3">
+                  {/* Title and timestamp */}
                   <div className="flex justify-between items-start mb-3">
                     <div className="font-medium text-sm">{workActivities[animationStep].title}</div>
                     <div className="text-xs text-gray-500">{new Date().toLocaleTimeString()}</div>
                   </div>
                   
-                  <div className="mt-3 text-xs text-gray-600">
+                  {/* Description */}
+                  <div className="mt-2 text-xs text-gray-600 mb-3">
                     {workActivities[animationStep].description}
                   </div>
                   
-                  <div className="mt-4 flex flex-wrap items-center">
-                    <div className="text-xs font-medium text-primary mr-2">Skills:</div>
+                  {/* Work domains */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Domains:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {workActivities[animationStep].domains.map((domain, idx) => (
+                        <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{domain}</span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Professional achievement */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Achievement:</div>
+                    <div className="text-xs text-gray-600">
+                      {workActivities[animationStep].achievements}
+                    </div>
+                  </div>
+                  
+                  {/* Project impact */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Impact:</div>
+                    <div className="text-xs text-gray-600">
+                      {workActivities[animationStep].impact}
+                    </div>
+                  </div>
+                  
+                  {/* Skills */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Skills:</div>
                     <div className="flex flex-wrap gap-1">
                       {workActivities[animationStep].skills.map((skill, idx) => (
                         <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Collaborators */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Collaborated with:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {workActivities[animationStep].collaborators.map((collaborator, idx) => (
+                        <span key={idx} className="px-2 py-1 rounded-full bg-blue-50 text-blue-700 text-xs">{collaborator}</span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Stakeholders */}
+                  <div className="mb-3">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Key Stakeholders:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {workActivities[animationStep].stakeholders.map((stakeholder, idx) => (
+                        <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{stakeholder}</span>
                       ))}
                     </div>
                   </div>
