@@ -34,13 +34,13 @@ const About = () => {
     {
       name: "Honey Arora",
       role: "Founder",
-      bio: "17+ years in Software development, Product management, and Management consulting roles.<br>Ex EY, Ex Infoedge.<br>MBA - IIM Ahmedabad",
+      bio: "17+ years in Software development, Product management, and Management consulting roles. <br/> Ex EY, Ex Infoedge. <br/> MBA - IIM Ahmedabad",
       image: "/img/honey.jpeg"
     },
     {
       name: "Ashish Gupta",
       role: "Co-Founder",
-      bio: "14+ years in software development and product management roles.<br>Ex FinancePeer, Ex ICICI<br>MBA - IIM Ahmedabad",
+      bio: "14+ years in software development and product management roles. <br/> Ex FinancePeer, Ex ICICI <br/> MBA - IIM Ahmedabad",
       image: "/img/ashish.jpeg"
     },
     {
