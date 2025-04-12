@@ -319,8 +319,6 @@ const Hero = () => {
               </div>
               
               <div className="p-4 h-[300px] sm:h-[350px] overflow-auto">
-                <div className="text-xs font-medium text-primary mb-3">Today's Chronicle</div>
-                
                 {/* Enhanced chronicle entry with all requested elements */}
                 <div className="border-l-4 border-primary pl-3 pb-3">
                   {/* Title and date */}
@@ -344,24 +342,6 @@ const Hero = () => {
                     <div className="text-xs font-medium text-gray-700 mb-1">Achievement:</div>
                     <div className="text-xs text-gray-600">
                       {workActivities[animationStep].achievements}
-                    </div>
-                  </div>
-                  
-                  {/* Project impact */}
-                  <div className="mb-3 text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Impact:</div>
-                    <div className="text-xs text-gray-600">
-                      {workActivities[animationStep].impact}
-                    </div>
-                  </div>
-                  
-                  {/* Skills */}
-                  <div className="mb-3 text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Skills:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {workActivities[animationStep].skills.map((skill, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                      ))}
                     </div>
                   </div>
                   
@@ -405,6 +385,24 @@ const Hero = () => {
                           )}
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  
+                  {/* Skills - moved to near the bottom */}
+                  <div className="mb-3 text-left">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Skills:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {workActivities[animationStep].skills.map((skill, idx) => (
+                        <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Project impact - moved to the very bottom */}
+                  <div className="text-left">
+                    <div className="text-xs font-medium text-gray-700 mb-1">Impact:</div>
+                    <div className="text-xs text-gray-600">
+                      {workActivities[animationStep].impact}
                     </div>
                   </div>
                 </div>
