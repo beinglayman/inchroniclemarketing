@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle, Code, Users, Award, FileCheck, Clock, Check, Lock } from 'lucide-react';
+import { CheckCircle, Code, Users, Award, FileCheck, Clock, Check, Lock, ChevronRight, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const [animationStep, setAnimationStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [showSkills, setShowSkills] = useState(false);
+  const [showImpact, setShowImpact] = useState(false);
   const heroRef = useRef(null);
   
   // Simple validation responses
@@ -388,23 +390,50 @@ const Hero = () => {
                     </div>
                   </div>
                   
-                  {/* Skills - moved to near the bottom */}
-                  <div className="mb-3 text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Skills:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {workActivities[animationStep].skills.map((skill, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                      ))}
-                    </div>
+                  {/* Skills and Impact as expandable buttons */}
+                  <div className="flex gap-2 text-left mt-4">
+                    <button 
+                      className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${showSkills ? 'bg-primary text-white' : 'bg-primary/10 text-primary hover:bg-primary/20'}`}
+                      onClick={() => {
+                        setShowSkills(!showSkills);
+                        if (!showSkills) setShowImpact(false);
+                      }}
+                    >
+                      {showSkills ? <ChevronDown className="w-3 h-3 mr-1" /> : <ChevronRight className="w-3 h-3 mr-1" />}
+                      Skills
+                    </button>
+                    
+                    <button 
+                      className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${showImpact ? 'bg-primary text-white' : 'bg-primary/10 text-primary hover:bg-primary/20'}`}
+                      onClick={() => {
+                        setShowImpact(!showImpact);
+                        if (!showImpact) setShowSkills(false);
+                      }}
+                    >
+                      {showImpact ? <ChevronDown className="w-3 h-3 mr-1" /> : <ChevronRight className="w-3 h-3 mr-1" />}
+                      Impact
+                    </button>
                   </div>
                   
-                  {/* Project impact - moved to the very bottom */}
-                  <div className="text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Impact:</div>
-                    <div className="text-xs text-gray-600">
-                      {workActivities[animationStep].impact}
+                  {/* Expanded skills section */}
+                  {showSkills && (
+                    <div className="mt-2 mb-3 p-2 bg-gray-50 rounded-md border border-gray-100 text-left">
+                      <div className="flex flex-wrap gap-1">
+                        {workActivities[animationStep].skills.map((skill, idx) => (
+                          <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  
+                  {/* Expanded impact section */}
+                  {showImpact && (
+                    <div className="mt-2 p-2 bg-gray-50 rounded-md border border-gray-100 text-left">
+                      <div className="text-xs text-gray-600">
+                        {workActivities[animationStep].impact}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
