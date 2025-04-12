@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, CheckCircle, ChevronRight, Users, Award, FileText } from 'lucide-react';
+import { Calendar, CheckCircle, ChevronRight, Users, Award, FileText, X } from 'lucide-react';
 
 const Hero = () => {
   const [animationStep, setAnimationStep] = useState(0);
@@ -12,6 +12,7 @@ const Hero = () => {
       date: "February 2025",
       status: "Completed",
       skills: ["React.js", "TypeScript"],
+      cvEntry: "Led the optimization of our company's e-commerce platform, working with cross-functional teams to improve overall site performance. Implemented various technical improvements and collaborated with team members to identify and resolve performance bottlenecks. The project was completed on schedule and received positive feedback from management.",
       impact: "Improved site loading speed by 65% and reduced bounce rate by 28%, resulting in 15% increase in conversion rate",
       relatedEntries: [
         "Performance audit and bottleneck identification",
@@ -32,6 +33,7 @@ const Hero = () => {
       date: "December 2024",
       status: "Completed",
       skills: ["Figma", "CSS", "Accessibility"],
+      cvEntry: "Managed the redesign and relaunch of the company marketing website with a focus on improving user experience and conversion rates. Worked closely with stakeholders to ensure the new design met brand guidelines and business objectives. Applied best practices in modern web design and ensured mobile responsiveness across all pages.",
       impact: "Increased organic traffic by 43% and improved lead generation by 37% through optimized user journeys",
       relatedEntries: [
         "Competitive analysis and design research",
@@ -52,6 +54,7 @@ const Hero = () => {
       date: "October 2024",
       status: "Completed",
       skills: ["API Integration", "Zendesk", "Salesforce"],
+      cvEntry: "Spearheaded the integration of our customer support systems with existing CRM infrastructure to streamline service operations. Coordinated with multiple departments to ensure seamless transition with minimal disruption to ongoing customer support. Developed comprehensive documentation and conducted training sessions for support staff on the new integrated system.",
       impact: "Reduced ticket resolution time by 42% and improved CSAT scores from 7.6 to 9.2",
       relatedEntries: [
         "Requirements gathering and vendor selection",
@@ -142,23 +145,29 @@ const Hero = () => {
                   <div className="text-sm text-gray-600">TechCorp Inc, 2023-2025</div>
                 </div>
                 
-                <ul className="pl-5 list-disc text-sm text-gray-700 space-y-2">
-                  <li>Led development of e-commerce platform optimization project</li>
-                  <li>Improved site performance and reduced load times</li>
-                  <li>Worked with frontend and UX teams on various projects</li>
-                  <li>Utilized React.js and TypeScript for application development</li>
-                  <li>Received positive feedback from management</li>
-                </ul>
+                <div className="text-sm text-gray-700 leading-relaxed mb-6">
+                  {comparisonData[animationStep].cvEntry}
+                </div>
                 
-                <div className="mt-6 bg-gray-50 rounded p-3 border border-gray-100">
-                  <div className="text-xs text-gray-400 mb-1">The Problem With Traditional Resumes</div>
-                  <div className="text-sm text-gray-600">
-                    <ul className="pl-4 list-disc space-y-1">
-                      <li>Generic descriptions without specifics</li>
-                      <li>Unverifiable claims and accomplishments</li>
-                      <li>No breakdown of actual contributions</li>
-                      <li>Missing measurable impacts and results</li>
-                    </ul>
+                <div className="mt-6 bg-red-50 rounded p-3 border border-red-100">
+                  <div className="text-xs text-red-500 font-medium mb-2">The Problem With Traditional Resumes</div>
+                  <div className="text-sm text-gray-700">
+                    <div className="flex items-start mb-1.5">
+                      <X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Generic descriptions without specifics or metrics</span>
+                    </div>
+                    <div className="flex items-start mb-1.5">
+                      <X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Unverifiable claims and accomplishments</span>
+                    </div>
+                    <div className="flex items-start mb-1.5">
+                      <X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>No breakdown of actual contributions</span>
+                    </div>
+                    <div className="flex items-start">
+                      <X className="w-4 h-4 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Missing validation from collaborators</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -280,6 +289,18 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Carousel Dots */}
+          <div className="flex justify-center items-center gap-3 mt-8">
+            {comparisonData.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all ${animationStep === index ? 'bg-primary scale-125' : 'bg-gray-300 hover:bg-gray-400'}`}
+                onClick={() => setAnimationStep(index)}
+                aria-label={`Example ${index + 1}`}
+              />
+            ))}
           </div>
           
           {/* CTA Section */}
