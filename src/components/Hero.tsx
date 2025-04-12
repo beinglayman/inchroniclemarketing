@@ -11,6 +11,8 @@ const Hero = () => {
       title: "E-commerce Platform Performance Optimization",
       date: "February 2025",
       status: "Completed",
+      role: "Senior Developer",
+      company: "TechCorp Inc, 2023-2025",
       skills: ["React.js", "TypeScript"],
       cvEntry: "Led the optimization of our company's e-commerce platform, working with cross-functional teams to improve overall site performance. Implemented various technical improvements and collaborated with team members to identify and resolve performance bottlenecks. The project was completed on schedule and received positive feedback from management.",
       impact: "Improved site loading speed by 65% and reduced bounce rate by 28%, resulting in 15% increase in conversion rate",
@@ -29,30 +31,34 @@ const Hero = () => {
       ]
     },
     {
-      title: "Marketing Website Relaunch Project",
-      date: "December 2024",
+      title: "Q3 Brand Awareness Campaign",
+      date: "November 2024",
       status: "Completed",
-      skills: ["Figma", "CSS", "Accessibility"],
-      cvEntry: "Managed the redesign and relaunch of the company marketing website with a focus on improving user experience and conversion rates. Worked closely with stakeholders to ensure the new design met brand guidelines and business objectives. Applied best practices in modern web design and ensured mobile responsiveness across all pages.",
-      impact: "Increased organic traffic by 43% and improved lead generation by 37% through optimized user journeys",
+      role: "Marketing Manager",
+      company: "GlobalBrands Ltd, 2022-Present",
+      skills: ["Campaign Strategy", "Social Media", "Analytics"],
+      cvEntry: "Developed and executed comprehensive brand awareness campaign across multiple channels, focusing on our target demographic of 25-45 year old professionals. Coordinated with external agencies for creative production and managed internal team for content distribution. Presented campaign results to executive team and incorporated learnings into future campaign strategies.",
+      impact: "Achieved 3.2M impressions with 4.8% engagement rate, increased brand recall by 27%, and generated 4,500+ qualified leads at 22% below target CPA",
       relatedEntries: [
-        "Competitive analysis and design research",
-        "User testing and feedback implementation",
-        "Analytics setup and conversion tracking"
+        "Market research and audience segmentation",
+        "Channel strategy and budget allocation",
+        "Performance analysis and optimization"
       ],
       collaborators: [
-        { name: "Olivia Parker", role: "Marketing Director" },
-        { name: "Raj Patel", role: "SEO Specialist" }
+        { name: "Jason Kim", role: "Content Strategist" },
+        { name: "Elena Rodriguez", role: "Media Buyer" }
       ],
       reviewers: [
-        { name: "David Kim", role: "CMO" },
-        { name: "Lisa Chen", role: "Product Manager" }
+        { name: "Victoria Lee", role: "CMO" },
+        { name: "Robert Chen", role: "Brand Director" }
       ]
     },
     {
       title: "Customer Support System Integration",
       date: "October 2024",
       status: "Completed",
+      role: "Customer Success Manager",
+      company: "ServiceNow Solutions, 2021-Present",
       skills: ["API Integration", "Zendesk", "Salesforce"],
       cvEntry: "Spearheaded the integration of our customer support systems with existing CRM infrastructure to streamline service operations. Coordinated with multiple departments to ensure seamless transition with minimal disruption to ongoing customer support. Developed comprehensive documentation and conducted training sessions for support staff on the new integrated system.",
       impact: "Reduced ticket resolution time by 42% and improved CSAT scores from 7.6 to 9.2",
@@ -62,12 +68,58 @@ const Hero = () => {
         "Team training and process documentation"
       ],
       collaborators: [
-        { name: "James Wilson", role: "Customer Success Manager" },
+        { name: "James Wilson", role: "Solution Architect" },
         { name: "Sophia Lee", role: "Integration Specialist" }
       ],
       reviewers: [
         { name: "Michael Brown", role: "VP Customer Success" },
         { name: "Aisha Khan", role: "IT Director" }
+      ]
+    },
+    {
+      title: "Annual Financial Planning & Analysis Restructuring",
+      date: "January 2025",
+      status: "Completed",
+      role: "Finance Director",
+      company: "Innovex Enterprises, 2020-Present",
+      skills: ["Financial Modeling", "Forecasting", "Budgeting"],
+      cvEntry: "Led the restructuring of our company's financial planning and analysis processes to improve accuracy of forecasts and streamline budget development. Worked with department heads to align financial goals with strategic objectives and implemented new reporting methodologies. Enhanced transparency in financial communications across the organization.",
+      impact: "Reduced budget variance by 65%, cut planning cycle time by 3 weeks, and identified $4.2M in cost optimization opportunities",
+      relatedEntries: [
+        "Process analysis and gap identification",
+        "Forecasting model development",
+        "Cross-departmental budget alignment"
+      ],
+      collaborators: [
+        { name: "Thomas Chen", role: "FP&A Manager" },
+        { name: "Lisa Washington", role: "Business Analyst" }
+      ],
+      reviewers: [
+        { name: "Jordan Martinez", role: "CFO" },
+        { name: "Priya Sharma", role: "COO" }
+      ]
+    },
+    {
+      title: "Clinical Trial Phase II Completion",
+      date: "March 2025",
+      status: "Completed",
+      role: "Clinical Research Director",
+      company: "BioAdvance Pharmaceuticals, 2018-Present",
+      skills: ["Clinical Protocols", "Data Analysis", "Regulatory Compliance"],
+      cvEntry: "Managed Phase II clinical trial for our leading therapeutic candidate, overseeing patient recruitment, study protocols, and data collection across 12 research sites. Collaborated with regulatory affairs to ensure compliance with all applicable standards and reporting requirements. Prepared comprehensive documentation for review by internal committees and external stakeholders.",
+      impact: "Completed trial 45 days ahead of schedule with 96% patient retention rate and identified statistically significant efficacy markers for advancing to Phase III",
+      relatedEntries: [
+        "Protocol development and site preparation",
+        "Data collection and interim analysis",
+        "Final report preparation and submission"
+      ],
+      collaborators: [
+        { name: "Dr. Samantha Wu", role: "Principal Investigator" },
+        { name: "Mark Johnson", role: "Biostatistician" }
+      ],
+      reviewers: [
+        { name: "Dr. Alan Friedman", role: "Chief Medical Officer" },
+        { name: "Diana Torres", role: "VP Regulatory Affairs" }
       ]
     }
   ];
@@ -141,8 +193,8 @@ const Hero = () => {
               
               <div className="p-5 text-left">
                 <div className="mb-4 pb-4 border-b border-gray-100">
-                  <h4 className="font-medium text-lg mb-1">Senior Developer</h4>
-                  <div className="text-sm text-gray-600">TechCorp Inc, 2023-2025</div>
+                  <h4 className="font-medium text-lg mb-1">{comparisonData[animationStep].role}</h4>
+                  <div className="text-sm text-gray-600">{comparisonData[animationStep].company}</div>
                 </div>
                 
                 <div className="text-sm text-gray-700 leading-relaxed mb-6">
