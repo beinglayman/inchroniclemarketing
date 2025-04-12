@@ -6,6 +6,12 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const heroRef = useRef(null);
   
+  // Simple validation responses
+  const validations = [
+    { name: "Sarah Chen", role: "Team Lead", message: "Verified" },
+    { name: "Miguel R.", role: "Manager", message: "Confirmed" },
+  ];
+
   // Work activities that will be "chronicled" in real-time
   const workActivities = [
     {
@@ -19,54 +25,32 @@ const Hero = () => {
       stakeholders: ["Product Manager", "CTO", "Customer Success"],
       profession: "Software Developer",
       workContent: (
-        <div className="h-full flex flex-col bg-white">
-          <div className="flex items-center bg-gray-100 px-3 py-2 border-b border-gray-200">
-            <div className="h-3 w-3 bg-red-500 rounded-full mr-1"></div>
-            <div className="h-3 w-3 bg-yellow-500 rounded-full mr-1"></div>
-            <div className="h-3 w-3 bg-green-500 rounded-full mr-1"></div>
-            <div className="ml-2 text-xs font-medium">Database Performance Dashboard</div>
-          </div>
-          <div className="flex-1 p-3 overflow-auto">
-            <div className="text-xs font-medium mb-2">Query Performance Metrics</div>
-            <div className="h-32 bg-gray-50 rounded border border-gray-200 p-2 mb-3">
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-xs">Customer Dashboard Query:</span>
-                <span className="text-xs font-medium text-green-600">-40% Response Time</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                <div className="bg-green-500 h-2 rounded-full" style={{width: `${60 + animationStep * 10}%`}}></div>
-              </div>
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>Before: 170ms</span>
-                <span>After: 102ms</span>
-              </div>
-              <div className="mt-3 text-xs text-gray-700">
-                <div className="flex justify-between mb-1">
-                  <span>Query Cache Hit Rate:</span>
-                  <span className="font-medium">{85 + animationStep}%</span>
-                </div>
-                <div className="flex justify-between mb-1">
-                  <span>Index Utilization:</span>
-                  <span className="font-medium">{90 + animationStep * 2}%</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Server CPU Load:</span>
-                  <span className="font-medium text-green-600">{30 - animationStep * 5}%</span>
-                </div>
-              </div>
+        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
+          <div className="w-full max-w-[240px] mx-auto">
+            {/* Artistic code/database illustration */}
+            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              {/* Database cylinder */}
+              <ellipse cx="120" cy="40" rx="50" ry="15" fill="#E6E6FF" stroke="#5D259F" strokeWidth="2" />
+              <path d="M70 40 L70 130 C70 138.3 92.4 145 120 145 C147.6 145 170 138.3 170 130 L170 40" fill="none" stroke="#5D259F" strokeWidth="2" />
+              <ellipse cx="120" cy="130" rx="50" ry="15" fill="#E6E6FF" stroke="#5D259F" strokeWidth="2" />
+              
+              {/* Query lines */}
+              <path d="M70 65 L170 65" stroke="#5D259F" strokeWidth="2" strokeDasharray="5,3" />
+              <path d="M70 95 L170 95" stroke="#5D259F" strokeWidth="2" strokeDasharray="5,3" />
+              
+              {/* Speed indicator */}
+              <circle cx="200" cy="85" r="25" fill={animationStep > 1 ? "#9BF2B8" : "#F2C09B"} stroke="#5D259F" strokeWidth="2" />
+              <text x="200" y="90" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#5D259F">40%</text>
+              
+              {/* Performance arrow */}
+              <path d="M160 85 L180 85" stroke="#5D259F" strokeWidth="2" />
+              <path d="M180 85 L175 80 L180 85 L175 90" fill="none" stroke="#5D259F" strokeWidth="2" />
+            </svg>
+            
+            <div className="mt-6 text-center">
+              <div className="text-sm font-medium text-primary">Performance Optimization</div>
+              <div className="text-xs text-gray-600 mt-2">Response time improved from 170ms to 102ms</div>
             </div>
-            <div className="text-xs font-medium mb-1">Optimization Summary</div>
-            <div className="text-xs text-gray-600 mb-2">
-              ✓ Added composite index for frequently queried columns<br/>
-              ✓ Implemented query result caching with 10-minute TTL<br/>
-              ✓ Refactored joins to reduce table scans<br/>
-              {animationStep > 1 && "✓ Deployed to production environment"}
-            </div>
-            {animationStep > 2 && (
-              <div className="text-xs bg-green-100 text-green-800 p-2 rounded border border-green-200">
-                All performance tests passed. Changes deployed successfully.
-              </div>
-            )}
           </div>
         </div>
       )
@@ -82,48 +66,37 @@ const Hero = () => {
       stakeholders: ["CEO", "Executive Board", "Department Heads"],
       profession: "Financial Analyst",
       workContent: (
-        <div className="h-full flex flex-col bg-white">
-          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
-            <div className="text-xs font-medium">Q2 Financial Analysis.pptx</div>
-            <div className="text-xs text-gray-500">Slide 4 of 12</div>
-          </div>
-          <div className="flex-1 p-3 overflow-auto bg-blue-50">
-            <div className="bg-white rounded shadow-sm p-2 mb-2">
-              <div className="text-center text-sm font-bold text-blue-800 mb-2">Q2 Revenue Growth: +15%</div>
-              <div className="h-28 flex items-end justify-between px-2">
-                {['Q1', 'Q2', 'Q3 (Proj)', 'Q4 (Proj)'].map((quarter, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <div className="w-12 bg-blue-500 rounded-t" style={{
-                      height: i === 0 ? '60px' : 
-                             i === 1 ? '90px' : 
-                             i === 2 ? `${80 + animationStep * 5}px` : 
-                             `${70 + animationStep * 7}px`
-                    }}></div>
-                    <div className="text-xs mt-1">{quarter}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex gap-2 mb-3">
-              <div className="bg-white rounded shadow-sm p-2 flex-1">
-                <div className="text-xs font-medium text-blue-800 mb-1">Cost Reduction</div>
-                <div className="text-lg font-bold text-green-600">-8.5%</div>
-                <div className="text-xs text-gray-500">Year-over-Year</div>
-              </div>
-              <div className="bg-white rounded shadow-sm p-2 flex-1">
-                <div className="text-xs font-medium text-blue-800 mb-1">Profit Margin</div>
-                <div className="text-lg font-bold">{22 + animationStep}%</div>
-                <div className="text-xs text-gray-500">+3% from Q1</div>
-              </div>
-            </div>
-            <div className="bg-white rounded shadow-sm p-2">
-              <div className="text-xs font-medium text-blue-800 mb-1">Key Insights</div>
-              <ul className="text-xs text-gray-700 list-disc pl-4">
-                <li>New product line contributed 18% of Q2 revenue</li>
-                <li>International markets grew by 24%</li>
-                {animationStep > 1 && <li>Digital initiative reduced operational costs by 12%</li>}
-                {animationStep > 2 && <li>Updated Q3 forecast shows additional 5% growth potential</li>}
-              </ul>
+        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
+          <div className="w-full max-w-[240px] mx-auto">
+            {/* Artistic chart illustration */}
+            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              {/* Background grid */}
+              <rect x="40" y="30" width="160" height="100" fill="#F0F7FF" stroke="#AECDFF" strokeWidth="1" />
+              <path d="M40 50 L200 50" stroke="#AECDFF" strokeWidth="1" />
+              <path d="M40 70 L200 70" stroke="#AECDFF" strokeWidth="1" />
+              <path d="M40 90 L200 90" stroke="#AECDFF" strokeWidth="1" />
+              <path d="M40 110 L200 110" stroke="#AECDFF" strokeWidth="1" />
+              
+              {/* Axes */}
+              <path d="M40 30 L40 130 L200 130" stroke="#5D259F" strokeWidth="2" />
+              
+              {/* Bar chart */}
+              <rect x="60" y="90" width="20" rx="2" ry="2" height="40" fill="#5D259F" opacity="0.3" />
+              <rect x="100" y="70" width="20" rx="2" ry="2" height="60" fill="#5D259F" opacity="0.6" />
+              <rect x="140" y={90 - animationStep * 10} width="20" rx="2" ry="2" height={40 + animationStep * 10} fill="#5D259F" opacity="0.8" />
+              <rect x="180" y={100 - animationStep * 15} width="20" rx="2" ry="2" height={30 + animationStep * 15} fill="#5D259F" opacity="1" />
+              
+              {/* Growth indicator */}
+              <circle cx="180" cy="40" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" />
+              <text x="180" y="45" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#5D259F">+15%</text>
+              
+              {/* Trend line */}
+              <path d="M70 85 L110 70 L150 60 L190 50" fill="none" stroke="#5D259F" strokeWidth="2" strokeDasharray="3,2" />
+            </svg>
+            
+            <div className="mt-6 text-center">
+              <div className="text-sm font-medium text-primary">Financial Analysis</div>
+              <div className="text-xs text-gray-600 mt-2">Q2 Revenue Growth: 15% | Cost Reduction: 8.5%</div>
             </div>
           </div>
         </div>
@@ -140,81 +113,37 @@ const Hero = () => {
       stakeholders: ["CMO", "Growth Team", "Sales Leadership"],
       profession: "Marketing Specialist",
       workContent: (
-        <div className="h-full flex flex-col bg-white">
-          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
-            <div className="text-xs font-medium">A/B Test Results - Landing Page</div>
-            <div className="flex items-center">
-              <div className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Live Test Running</div>
-            </div>
-          </div>
-          <div className="flex-1 overflow-auto bg-gray-50 p-2">
-            <div className="flex gap-2 mb-3">
-              <div className="flex-1 bg-white border border-gray-200 rounded p-2">
-                <div className="text-xs text-gray-500 mb-1">Variant A (Control)</div>
-                <div className="h-24 bg-gray-100 rounded relative mb-2">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 bg-gray-300 rounded mb-1"></div>
-                      <div className="w-16 h-2 bg-gray-300 rounded mb-1"></div>
-                      <div className="w-12 h-2 bg-gray-300 rounded"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-xs mb-2">
-                  <div className="flex justify-between mb-1">
-                    <span>Visitors:</span>
-                    <span className="font-medium">2,458</span>
-                  </div>
-                  <div className="flex justify-between mb-1">
-                    <span>Sign-ups:</span>
-                    <span className="font-medium">344</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Conversion:</span>
-                    <span className="font-medium">14%</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex-1 bg-white border border-green-200 rounded p-2 shadow-sm">
-                <div className="text-xs text-green-600 font-medium mb-1">Variant B (Winner)</div>
-                <div className="h-24 bg-green-50 rounded relative mb-2">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 bg-green-200 rounded-full mb-1"></div>
-                      <div className="w-20 h-2 bg-green-300 rounded mb-1"></div>
-                      <div className="w-16 h-4 bg-green-400 rounded"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-xs mb-2">
-                  <div className="flex justify-between mb-1">
-                    <span>Visitors:</span>
-                    <span className="font-medium">2,412</span>
-                  </div>
-                  <div className="flex justify-between mb-1">
-                    <span>Sign-ups:</span>
-                    <span className="font-medium">{432 + animationStep * 10}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Conversion:</span>
-                    <span className="font-medium text-green-600">{18 + animationStep * 2}%</span>
-                  </div>
-                </div>
-                {animationStep > 1 && (
-                  <div className="text-xs bg-green-100 text-green-800 p-1 rounded text-center">
-                    +{28 + animationStep}% improvement
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="bg-white border border-gray-200 rounded p-2">
-              <div className="text-xs font-medium mb-1">Key Findings</div>
-              <ul className="text-xs text-gray-700 list-disc pl-4">
-                <li>Simplified form with fewer fields improved completion rate</li>
-                <li>Social proof elements increased trust signals</li>
-                {animationStep > 1 && <li>Clear call-to-action button increased click rate by 45%</li>}
-                {animationStep > 2 && <li>Statistical significance achieved at 99% confidence</li>}
-              </ul>
+        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
+          <div className="w-full max-w-[240px] mx-auto">
+            {/* Artistic A/B test illustration */}
+            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              {/* Split design */}
+              <rect x="30" y="30" width="80" height="110" rx="4" ry="4" fill="#F5F5F5" stroke="#AAAAAA" strokeWidth="2" />
+              <rect x="130" y="30" width="80" height="110" rx="4" ry="4" fill="#E6F7EF" stroke="#5D259F" strokeWidth="2" />
+              
+              {/* Design A elements */}
+              <rect x="40" y="45" width="60" height="10" rx="2" ry="2" fill="#DDDDDD" />
+              <rect x="40" y="65" width="60" height="10" rx="2" ry="2" fill="#DDDDDD" />
+              <rect x="40" y="85" width="30" height="10" rx="2" ry="2" fill="#DDDDDD" />
+              <rect x="40" y="105" width="60" height="20" rx="2" ry="2" fill="#BBBBBB" />
+              
+              {/* Design B elements */}
+              <circle cx="170" cy="60" r="15" fill="#9BF2B8" />
+              <rect x="140" y="85" width="60" height="10" rx="2" ry="2" fill="#AECDFF" />
+              <rect x="140" y="105" width="60" height="20" rx="10" ry="10" fill="#5D259F" />
+              
+              {/* Conversion indicators */}
+              <text x="70" y="155" textAnchor="middle" fontSize="12" fill="#666666">14%</text>
+              <text x="170" y="155" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F">{18 + animationStep * 2}%</text>
+              
+              {/* Improvement indicator */}
+              <circle cx="200" cy="50" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" opacity={animationStep > 1 ? "1" : "0"} />
+              <text x="200" y="55" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F" opacity={animationStep > 1 ? "1" : "0"}>+28%</text>
+            </svg>
+            
+            <div className="mt-6 text-center">
+              <div className="text-sm font-medium text-primary">A/B Testing</div>
+              <div className="text-xs text-gray-600 mt-2">Variant B increased conversion by 28%</div>
             </div>
           </div>
         </div>
@@ -231,133 +160,55 @@ const Hero = () => {
       stakeholders: ["Client CTO", "Client Procurement", "VP of Sales"],
       profession: "Account Executive",
       workContent: (
-        <div className="h-full flex flex-col bg-white">
-          <div className="flex items-center justify-between bg-gray-100 px-3 py-2 border-b border-gray-200">
-            <div className="text-xs font-medium">Client Meeting Notes</div>
-            <div className="text-xs text-gray-500">Global Enterprises Inc.</div>
-          </div>
-          <div className="flex-1 p-3 overflow-auto">
-            <div className="flex items-center mb-3">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-xs mr-2">GE</div>
-              <div>
-                <div className="text-xs font-medium">Contract Renewal Discussion</div>
-                <div className="text-xs text-gray-500">with Sarah Chen (CTO) and Financial Team</div>
-              </div>
-            </div>
+        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
+          <div className="w-full max-w-[240px] mx-auto">
+            {/* Artistic contract negotiation illustration */}
+            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              {/* Contract document */}
+              <rect x="70" y="30" width="100" height="120" fill="#FFFFFF" stroke="#5D259F" strokeWidth="2" />
+              <path d="M80 50 L160 50" stroke="#AAAAAA" strokeWidth="1" />
+              <path d="M80 70 L160 70" stroke="#AAAAAA" strokeWidth="1" />
+              <path d="M80 90 L160 90" stroke="#AAAAAA" strokeWidth="1" />
+              
+              {/* Signature area */}
+              <path d="M90 115 C100 105, 110 125, 120 115" stroke="#5D259F" strokeWidth="2" fill="none" opacity={animationStep > 2 ? "1" : "0"} />
+              
+              {/* Handshake */}
+              <circle cx="40" cy="90" r="20" fill="#E6E6FF" />
+              <path d="M30 90 L50 90" stroke="#5D259F" strokeWidth="2" />
+              <path d="M30 90 L25 85 M30 90 L25 95" stroke="#5D259F" strokeWidth="2" />
+              
+              <circle cx="200" cy="90" r="20" fill="#E6E6FF" />
+              <path d="M190 90 L210 90" stroke="#5D259F" strokeWidth="2" />
+              <path d="M210 90 L215 85 M210 90 L215 95" stroke="#5D259F" strokeWidth="2" />
+              
+              {/* Value increase indicator */}
+              <circle cx="190" cy="40" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" />
+              <text x="190" y="45" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F">+12%</text>
+              
+              {/* Progress indicator */}
+              <rect x="70" y="140" width="100" height="8" rx="4" ry="4" fill="#E6E6FF" />
+              <rect x="70" y="140" width={25 + (animationStep * 25)} height="8" rx="4" ry="4" fill="#5D259F" />
+            </svg>
             
-            <div className="mb-3">
-              <div className="text-xs font-medium mb-1">Contract Progress</div>
-              <div className="w-full h-2 bg-gray-200 rounded-full mb-1">
-                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${25 + animationStep * 25}%`}}></div>
-              </div>
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>Initial Proposal</span>
-                <span>Terms Negotiation</span>
-                <span>Final</span>
-              </div>
+            <div className="mt-6 text-center">
+              <div className="text-sm font-medium text-primary">Contract Negotiation</div>
+              <div className="text-xs text-gray-600 mt-2">3-year extension with 12% increased value</div>
             </div>
-            
-            <div className="text-xs border border-gray-200 rounded p-2 mb-3">
-              <div className="font-medium mb-1">Key Terms</div>
-              <table className="w-full text-xs">
-                <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-1">Duration:</td>
-                    <td className="py-1 font-medium">3 Years</td>
-                    <td className="py-1 text-green-600">(+1 year)</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-1">Contract Value:</td>
-                    <td className="py-1 font-medium">${1.45 + animationStep * 0.05}M</td>
-                    <td className="py-1 text-green-600">(+12%)</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Service Level:</td>
-                    <td className="py-1 font-medium">Premium</td>
-                    <td className="py-1 text-blue-600">(Maintained)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="text-xs mb-3">
-              <div className="font-medium mb-1">Discussion Notes</div>
-              <ul className="list-disc pl-4 text-gray-600">
-                <li>Addressed concerns about implementation timeline</li>
-                <li>Proposed quarterly business reviews for better alignment</li>
-                {animationStep > 1 && <li>Offered additional training sessions for new team members</li>}
-                {animationStep > 2 && <li>Secured verbal commitment pending final legal review</li>}
-              </ul>
-            </div>
-            
-            {animationStep > 2 && (
-              <div className="bg-green-100 text-green-800 p-2 text-xs rounded border border-green-200">
-                Contract draft sent to legal for final review. Client has indicated intent to sign by end of week.
-              </div>
-            )}
-          </div>
-        </div>
-      )
-    }
-  ];-2 bg-gray-200 rounded-full mb-1">
-                <div className="bg-blue-500 h-2 rounded-full" style={{width: `${25 + animationStep * 25}%`}}></div>
-              </div>
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>Initial Proposal</span>
-                <span>Terms Negotiation</span>
-                <span>Final</span>
-              </div>
-            </div>
-            
-            <div className="text-xs border border-gray-200 rounded p-2 mb-3">
-              <div className="font-medium mb-1">Key Terms</div>
-              <table className="w-full text-xs">
-                <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-1">Duration:</td>
-                    <td className="py-1 font-medium">3 Years</td>
-                    <td className="py-1 text-green-600">(+1 year)</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-1">Contract Value:</td>
-                    <td className="py-1 font-medium">${1.45 + animationStep * 0.05}M</td>
-                    <td className="py-1 text-green-600">(+12%)</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Service Level:</td>
-                    <td className="py-1 font-medium">Premium</td>
-                    <td className="py-1 text-blue-600">(Maintained)</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            
-            <div className="text-xs mb-3">
-              <div className="font-medium mb-1">Discussion Notes</div>
-              <ul className="list-disc pl-4 text-gray-600">
-                <li>Addressed concerns about implementation timeline</li>
-                <li>Proposed quarterly business reviews for better alignment</li>
-                {animationStep > 1 && <li>Offered additional training sessions for new team members</li>}
-                {animationStep > 2 && <li>Secured verbal commitment pending final legal review</li>}
-              </ul>
-            </div>
-            
-            {animationStep > 2 && (
-              <div className="bg-green-100 text-green-800 p-2 text-xs rounded border border-green-200">
-                Contract draft sent to legal for final review. Client has indicated intent to sign by end of week.
-              </div>
-            )}
           </div>
         </div>
       )
     }
   ];
   
-  // Simple validation responses
-  const validations = [
-    { name: "Sarah Chen", role: "Team Lead", message: "Verified" },
-    { name: "Miguel R.", role: "Manager", message: "Confirmed" },
-  ];
+  // Simplify animation - less frequent changes
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAnimationStep((prev) => (prev + 1) % workActivities.length);
+    }, 6000); // Increased from 4000ms to 6000ms
+    
+    return () => clearInterval(timer);
+  }, []);
 
   // Handle responsive layout
   useEffect(() => {
@@ -369,15 +220,6 @@ const Hero = () => {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Cycle through work activities
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setAnimationStep((prev) => (prev + 1) % workActivities.length);
-    }, 4000);
-    
-    return () => clearInterval(timer);
   }, []);
 
   // Animation for hero when scrolled into view
@@ -430,7 +272,7 @@ const Hero = () => {
           
           {/* Split Screen Visualization */}
           <div className="flex flex-col md:flex-row gap-8 mb-12 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
-            {/* Left side - Professional work happening */}
+            {/* Left side - Artistic representation of professional work */}
             <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
               <div className="relative bg-gray-100 p-3 border-b border-gray-200">
                 <h3 className="text-center text-base font-semibold text-gray-700">
@@ -440,14 +282,6 @@ const Hero = () => {
               
               <div className="h-[300px] sm:h-[350px] overflow-hidden">
                 {workActivities[animationStep].workContent}
-              </div>
-              
-              <div className="px-4 pb-4 flex items-center justify-between">
-                <div className="text-xs text-gray-500 flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                  <span>Active session</span>
-                </div>
-                <div className="text-xs text-gray-500">{new Date().toLocaleTimeString()}</div>
               </div>
             </div>
             
@@ -630,21 +464,6 @@ const globalStyles = `
 .hero-animate .animate-element.animate-in {
   opacity: 1;
   transform: translateY(0);
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 5px 0 rgba(93,37,159,0.3); }
-  50% { box-shadow: 0 0 15px 5px rgba(93,37,159,0.4); }
-  100% { box-shadow: 0 0 5px 0 rgba(93,37,159,0.3); }
 }
 `;
 
