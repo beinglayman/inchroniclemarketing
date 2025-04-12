@@ -287,19 +287,34 @@ const Hero = () => {
             
             {/* Right side - InChronicle documentation */}
             <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
-              <div className="relative bg-gray-100 p-3 border-b border-gray-200">
-                <div className="text-center">
+              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                <div className="flex items-center justify-between">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 1200 150" 
                     id="desktop-logo"
-                    style={{ height: "32px", width: "auto", margin: "0 auto" }}
+                    style={{ height: "32px", width: "auto" }}
                     className="h-8"
                   >
                     <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
                     <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
                     <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
                   </svg>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Clock className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Real-time</span>
+                    </div>
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Check className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Validated</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -308,29 +323,24 @@ const Hero = () => {
                 
                 {/* Enhanced chronicle entry with all requested elements */}
                 <div className="border-l-4 border-primary pl-3 pb-3">
-                  {/* Title and timestamp */}
+                  {/* Title and date */}
                   <div className="flex justify-between items-start mb-3">
                     <div className="font-medium text-sm">{workActivities[animationStep].title}</div>
-                    <div className="text-xs text-gray-500">{new Date().toLocaleTimeString()}</div>
-                  </div>
-                  
-                  {/* Description */}
-                  <div className="mt-2 text-xs text-gray-600 mb-3">
-                    {workActivities[animationStep].description}
-                  </div>
-                  
-                  {/* Work domains */}
-                  <div className="mb-3">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Domains:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {workActivities[animationStep].domains.map((domain, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{domain}</span>
-                      ))}
+                    <div className="text-xs text-gray-500">
+                      {animationStep === 0 ? "April 10, 2025" : 
+                       animationStep === 1 ? "April 8, 2025" : 
+                       animationStep === 2 ? "April 6, 2025" : 
+                       "April 3, 2025"}
                     </div>
                   </div>
                   
+                  {/* Description */}
+                  <div className="mt-2 text-xs text-gray-600 mb-3 text-left">
+                    {workActivities[animationStep].description}
+                  </div>
+                  
                   {/* Professional achievement */}
-                  <div className="mb-3">
+                  <div className="mb-3 text-left">
                     <div className="text-xs font-medium text-gray-700 mb-1">Achievement:</div>
                     <div className="text-xs text-gray-600">
                       {workActivities[animationStep].achievements}
@@ -338,7 +348,7 @@ const Hero = () => {
                   </div>
                   
                   {/* Project impact */}
-                  <div className="mb-3">
+                  <div className="mb-3 text-left">
                     <div className="text-xs font-medium text-gray-700 mb-1">Impact:</div>
                     <div className="text-xs text-gray-600">
                       {workActivities[animationStep].impact}
@@ -346,7 +356,7 @@ const Hero = () => {
                   </div>
                   
                   {/* Skills */}
-                  <div className="mb-3">
+                  <div className="mb-3 text-left">
                     <div className="text-xs font-medium text-gray-700 mb-1">Skills:</div>
                     <div className="flex flex-wrap gap-1">
                       {workActivities[animationStep].skills.map((skill, idx) => (
@@ -356,7 +366,7 @@ const Hero = () => {
                   </div>
                   
                   {/* Collaborators */}
-                  <div className="mb-3">
+                  <div className="mb-3 text-left">
                     <div className="text-xs font-medium text-gray-700 mb-1">Collaborated with:</div>
                     <div className="flex flex-wrap gap-1">
                       {workActivities[animationStep].collaborators.map((collaborator, idx) => (
@@ -365,34 +375,36 @@ const Hero = () => {
                     </div>
                   </div>
                   
-                  {/* Stakeholders */}
-                  <div className="mb-3">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Key Stakeholders:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {workActivities[animationStep].stakeholders.map((stakeholder, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{stakeholder}</span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Validation requests and responses */}
-                  <div className={`mt-4 ${animationStep > 0 ? "" : "opacity-0"}`}>
-                    <div className="text-xs font-medium text-primary mb-2">Validation Requests:</div>
-                    <div className="flex flex-col gap-2">
-                      {validations.slice(0, animationStep).map((validation, index) => (
-                        <div key={index} className="flex justify-between items-center bg-green-50 px-3 py-2 rounded">
-                          <div className="flex items-center">
-                            <div className="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-xs mr-2">
-                              {validation.name.charAt(0)}
-                            </div>
-                            <div>
-                              <div className="text-xs font-medium">{validation.name}</div>
-                              <div className="text-xs text-gray-500">{validation.role}</div>
-                            </div>
-                          </div>
-                          <div className="text-xs text-green-700 font-medium">{validation.message}</div>
+                  {/* Stakeholders and Validators (combined) */}
+                  <div className="mb-3 text-left">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="text-xs font-medium text-gray-700 mb-1">Key Stakeholders:</div>
+                        <div className="flex flex-wrap gap-1">
+                          {workActivities[animationStep].stakeholders.map((stakeholder, idx) => (
+                            <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{stakeholder}</span>
+                          ))}
                         </div>
-                      ))}
+                      </div>
+                      
+                      <div className="flex-1 ml-2">
+                        <div className="text-xs font-medium text-gray-700 mb-1">Validated by:</div>
+                        <div className="flex flex-wrap gap-1">
+                          {animationStep > 0 ? (
+                            <>
+                              <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">{validations[0].name}</span>
+                              {animationStep > 1 && (
+                                <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">{validations[1].name}</span>
+                              )}
+                              {animationStep > 1 && (
+                                <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">+3 more</span>
+                              )}
+                            </>
+                          ) : (
+                            <span className="px-2 py-1 rounded-full bg-gray-100 text-gray-400 text-xs">Pending validation</span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -412,18 +424,7 @@ const Hero = () => {
           
           {/* Trust indicators - simplified */}
           <div className="mt-10 flex flex-wrap justify-center gap-8 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
-            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow">
-              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2">
-                <Clock className="w-3 h-3 text-primary" />
-              </div>
-              <span className="text-sm font-medium">Real-time Documentation</span>
-            </div>
-            <div className="flex items-center bg-white px-4 py-2 rounded-md shadow">
-              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2">
-                <Check className="w-3 h-3 text-primary" />
-              </div>
-              <span className="text-sm font-medium">Peer-Validated</span>
-            </div>
+            {/* Removed trust indicators - now appearing in the header */}
           </div>
         </div>
       </div>
