@@ -1,227 +1,81 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle, Code, Users, Award, FileCheck, Clock, Check, Lock, ChevronRight, ChevronDown } from 'lucide-react';
+import { Calendar, CheckCircle, ChevronRight, Users, Award, FileText } from 'lucide-react';
 
 const Hero = () => {
   const [animationStep, setAnimationStep] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [showSkills, setShowSkills] = useState(false);
-  const [showImpact, setShowImpact] = useState(false);
   const heroRef = useRef(null);
   
-  // Simple validation responses
-  const validations = [
-    { name: "Sarah Chen", role: "Team Lead", message: "Verified" },
-    { name: "Miguel R.", role: "Manager", message: "Confirmed" },
-  ];
-
-  // Work activities that will be "chronicled" in real-time
-  const workActivities = [
+  // Sample content for comparison
+  const comparisonData = [
     {
-      title: "Optimized database query response time by 40%",
-      description: "Used indexing strategy and query caching to improve database performance for our customer dashboard. Reduced average query time from 170ms to 102ms.",
-      skills: ["SQL Optimization", "Database Indexing", "Performance Tuning"],
-      domains: ["Backend Development", "Database Architecture"],
-      achievements: "Improved system performance metrics by 40%, exceeding quarterly goal of 25%",
-      impact: "Reduced page load time for 15,000+ daily users, decreasing bounce rate by 12%",
-      collaborators: ["Backend Team", "DevOps"],
-      stakeholders: ["Product Manager", "CTO", "Customer Success"],
-      profession: "Software Developer",
-      workContent: (
-        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
-          <div className="w-full max-w-[240px] mx-auto">
-            {/* Artistic code/database illustration */}
-            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              {/* Database cylinder */}
-              <ellipse cx="120" cy="40" rx="50" ry="15" fill="#E6E6FF" stroke="#5D259F" strokeWidth="2" />
-              <path d="M70 40 L70 130 C70 138.3 92.4 145 120 145 C147.6 145 170 138.3 170 130 L170 40" fill="none" stroke="#5D259F" strokeWidth="2" />
-              <ellipse cx="120" cy="130" rx="50" ry="15" fill="#E6E6FF" stroke="#5D259F" strokeWidth="2" />
-              
-              {/* Query lines */}
-              <path d="M70 65 L170 65" stroke="#5D259F" strokeWidth="2" strokeDasharray="5,3" />
-              <path d="M70 95 L170 95" stroke="#5D259F" strokeWidth="2" strokeDasharray="5,3" />
-              
-              {/* Speed indicator */}
-              <circle cx="200" cy="85" r="25" fill={animationStep > 1 ? "#9BF2B8" : "#F2C09B"} stroke="#5D259F" strokeWidth="2" />
-              <text x="200" y="90" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#5D259F">40%</text>
-              
-              {/* Performance arrow */}
-              <path d="M160 85 L180 85" stroke="#5D259F" strokeWidth="2" />
-              <path d="M180 85 L175 80 L180 85 L175 90" fill="none" stroke="#5D259F" strokeWidth="2" />
-            </svg>
-            
-            <div className="mt-6 text-center">
-              <div className="text-sm font-medium text-primary">Performance Optimization</div>
-              <div className="text-xs text-gray-600 mt-2">Response time improved from 170ms to 102ms</div>
-            </div>
-          </div>
-        </div>
-      )
+      title: "E-commerce Platform Performance Optimization",
+      date: "February 2025",
+      status: "Completed",
+      skills: ["React.js", "TypeScript"],
+      impact: "Improved site loading speed by 65% and reduced bounce rate by 28%, resulting in 15% increase in conversion rate",
+      relatedEntries: [
+        "Performance audit and bottleneck identification",
+        "React component optimization implementation",
+        "Load testing and final optimization"
+      ],
+      collaborators: [
+        { name: "Emily Chen", role: "Frontend Developer" },
+        { name: "Alex Wong", role: "UX Designer" }
+      ],
+      reviewers: [
+        { name: "Sarah Johnson", role: "Tech Lead" },
+        { name: "Marcus Williams", role: "Engineering Manager" }
+      ]
     },
     {
-      title: "Presented quarterly financial analysis to executive team",
-      description: "Delivered comprehensive financial review highlighting 15% revenue growth, cost-saving initiatives, and updated projections for upcoming quarters.",
-      skills: ["Financial Analysis", "Executive Communication", "Data Visualization"],
-      domains: ["Corporate Finance", "Strategic Planning"],
-      achievements: "Received executive approval for all proposed financial strategies and Q3 budget allocation",
-      impact: "Identified $2.4M in cost-saving opportunities while supporting 15% projected growth",
-      collaborators: ["Finance Team", "Business Intelligence"],
-      stakeholders: ["CEO", "Executive Board", "Department Heads"],
-      profession: "Financial Analyst",
-      workContent: (
-        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
-          <div className="w-full max-w-[240px] mx-auto">
-            {/* Artistic chart illustration */}
-            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              {/* Background grid */}
-              <rect x="40" y="30" width="160" height="100" fill="#F0F7FF" stroke="#AECDFF" strokeWidth="1" />
-              <path d="M40 50 L200 50" stroke="#AECDFF" strokeWidth="1" />
-              <path d="M40 70 L200 70" stroke="#AECDFF" strokeWidth="1" />
-              <path d="M40 90 L200 90" stroke="#AECDFF" strokeWidth="1" />
-              <path d="M40 110 L200 110" stroke="#AECDFF" strokeWidth="1" />
-              
-              {/* Axes */}
-              <path d="M40 30 L40 130 L200 130" stroke="#5D259F" strokeWidth="2" />
-              
-              {/* Bar chart */}
-              <rect x="60" y="90" width="20" rx="2" ry="2" height="40" fill="#5D259F" opacity="0.3" />
-              <rect x="100" y="70" width="20" rx="2" ry="2" height="60" fill="#5D259F" opacity="0.6" />
-              <rect x="140" y={90 - animationStep * 10} width="20" rx="2" ry="2" height={40 + animationStep * 10} fill="#5D259F" opacity="0.8" />
-              <rect x="180" y={100 - animationStep * 15} width="20" rx="2" ry="2" height={30 + animationStep * 15} fill="#5D259F" opacity="1" />
-              
-              {/* Growth indicator */}
-              <circle cx="180" cy="40" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" />
-              <text x="180" y="45" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#5D259F">+15%</text>
-              
-              {/* Trend line */}
-              <path d="M70 85 L110 70 L150 60 L190 50" fill="none" stroke="#5D259F" strokeWidth="2" strokeDasharray="3,2" />
-            </svg>
-            
-            <div className="mt-6 text-center">
-              <div className="text-sm font-medium text-primary">Financial Analysis</div>
-              <div className="text-xs text-gray-600 mt-2">Q2 Revenue Growth: 15% | Cost Reduction: 8.5%</div>
-            </div>
-          </div>
-        </div>
-      )
+      title: "Marketing Website Relaunch Project",
+      date: "December 2024",
+      status: "Completed",
+      skills: ["Figma", "CSS", "Accessibility"],
+      impact: "Increased organic traffic by 43% and improved lead generation by 37% through optimized user journeys",
+      relatedEntries: [
+        "Competitive analysis and design research",
+        "User testing and feedback implementation",
+        "Analytics setup and conversion tracking"
+      ],
+      collaborators: [
+        { name: "Olivia Parker", role: "Marketing Director" },
+        { name: "Raj Patel", role: "SEO Specialist" }
+      ],
+      reviewers: [
+        { name: "David Kim", role: "CMO" },
+        { name: "Lisa Chen", role: "Product Manager" }
+      ]
     },
     {
-      title: "Designed and executed A/B test for landing page redesign",
-      description: "Created two variant designs and implemented testing strategy that led to 28% improvement in conversion rate for our product signup process.",
-      skills: ["A/B Testing", "UX Design", "Conversion Optimization"],
-      domains: ["Digital Marketing", "User Experience"],
-      achievements: "Delivered 28% conversion improvement, setting new department benchmark",
-      impact: "Increased qualified leads by 45%, translating to estimated $380K annual revenue",
-      collaborators: ["Design Team", "Web Development", "Analytics"],
-      stakeholders: ["CMO", "Growth Team", "Sales Leadership"],
-      profession: "Marketing Specialist",
-      workContent: (
-        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
-          <div className="w-full max-w-[240px] mx-auto">
-            {/* Artistic A/B test illustration */}
-            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              {/* Split design */}
-              <rect x="30" y="30" width="80" height="110" rx="4" ry="4" fill="#F5F5F5" stroke="#AAAAAA" strokeWidth="2" />
-              <rect x="130" y="30" width="80" height="110" rx="4" ry="4" fill="#E6F7EF" stroke="#5D259F" strokeWidth="2" />
-              
-              {/* Design A elements */}
-              <rect x="40" y="45" width="60" height="10" rx="2" ry="2" fill="#DDDDDD" />
-              <rect x="40" y="65" width="60" height="10" rx="2" ry="2" fill="#DDDDDD" />
-              <rect x="40" y="85" width="30" height="10" rx="2" ry="2" fill="#DDDDDD" />
-              <rect x="40" y="105" width="60" height="20" rx="2" ry="2" fill="#BBBBBB" />
-              
-              {/* Design B elements */}
-              <circle cx="170" cy="60" r="15" fill="#9BF2B8" />
-              <rect x="140" y="85" width="60" height="10" rx="2" ry="2" fill="#AECDFF" />
-              <rect x="140" y="105" width="60" height="20" rx="10" ry="10" fill="#5D259F" />
-              
-              {/* Conversion indicators */}
-              <text x="70" y="155" textAnchor="middle" fontSize="12" fill="#666666">14%</text>
-              <text x="170" y="155" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F">{18 + animationStep * 2}%</text>
-              
-              {/* Improvement indicator */}
-              <circle cx="200" cy="50" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" opacity={animationStep > 1 ? "1" : "0"} />
-              <text x="200" y="55" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F" opacity={animationStep > 1 ? "1" : "0"}>+28%</text>
-            </svg>
-            
-            <div className="mt-6 text-center">
-              <div className="text-sm font-medium text-primary">A/B Testing</div>
-              <div className="text-xs text-gray-600 mt-2">Variant B increased conversion by 28%</div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Led successful negotiation of major client contract renewal",
-      description: "Secured 3-year contract extension with 12% increased value while maintaining service level commitments and building stronger client relationship.",
-      skills: ["Negotiation", "Client Management", "Contract Strategy"],
-      domains: ["Sales", "Account Management"],
-      achievements: "Closed largest renewal of the quarter at 12% higher value than original contract",
-      impact: "Secured $1.7M in guaranteed revenue with potential for 25% expansion in year 2",
-      collaborators: ["Legal Team", "Implementation Specialists", "Finance"],
-      stakeholders: ["Client CTO", "Client Procurement", "VP of Sales"],
-      profession: "Account Executive",
-      workContent: (
-        <div className="h-full flex flex-col items-center justify-center bg-white p-8">
-          <div className="w-full max-w-[240px] mx-auto">
-            {/* Artistic contract negotiation illustration */}
-            <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              {/* Contract document */}
-              <rect x="70" y="30" width="100" height="120" fill="#FFFFFF" stroke="#5D259F" strokeWidth="2" />
-              <path d="M80 50 L160 50" stroke="#AAAAAA" strokeWidth="1" />
-              <path d="M80 70 L160 70" stroke="#AAAAAA" strokeWidth="1" />
-              <path d="M80 90 L160 90" stroke="#AAAAAA" strokeWidth="1" />
-              
-              {/* Signature area */}
-              <path d="M90 115 C100 105, 110 125, 120 115" stroke="#5D259F" strokeWidth="2" fill="none" opacity={animationStep > 2 ? "1" : "0"} />
-              
-              {/* Handshake */}
-              <circle cx="40" cy="90" r="20" fill="#E6E6FF" />
-              <path d="M30 90 L50 90" stroke="#5D259F" strokeWidth="2" />
-              <path d="M30 90 L25 85 M30 90 L25 95" stroke="#5D259F" strokeWidth="2" />
-              
-              <circle cx="200" cy="90" r="20" fill="#E6E6FF" />
-              <path d="M190 90 L210 90" stroke="#5D259F" strokeWidth="2" />
-              <path d="M210 90 L215 85 M210 90 L215 95" stroke="#5D259F" strokeWidth="2" />
-              
-              {/* Value increase indicator */}
-              <circle cx="190" cy="40" r="20" fill="#9BF2B8" stroke="#5D259F" strokeWidth="2" />
-              <text x="190" y="45" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#5D259F">+12%</text>
-              
-              {/* Progress indicator */}
-              <rect x="70" y="140" width="100" height="8" rx="4" ry="4" fill="#E6E6FF" />
-              <rect x="70" y="140" width={25 + (animationStep * 25)} height="8" rx="4" ry="4" fill="#5D259F" />
-            </svg>
-            
-            <div className="mt-6 text-center">
-              <div className="text-sm font-medium text-primary">Contract Negotiation</div>
-              <div className="text-xs text-gray-600 mt-2">3-year extension with 12% increased value</div>
-            </div>
-          </div>
-        </div>
-      )
+      title: "Customer Support System Integration",
+      date: "October 2024",
+      status: "Completed",
+      skills: ["API Integration", "Zendesk", "Salesforce"],
+      impact: "Reduced ticket resolution time by 42% and improved CSAT scores from 7.6 to 9.2",
+      relatedEntries: [
+        "Requirements gathering and vendor selection",
+        "Data migration and system configuration",
+        "Team training and process documentation"
+      ],
+      collaborators: [
+        { name: "James Wilson", role: "Customer Success Manager" },
+        { name: "Sophia Lee", role: "Integration Specialist" }
+      ],
+      reviewers: [
+        { name: "Michael Brown", role: "VP Customer Success" },
+        { name: "Aisha Khan", role: "IT Director" }
+      ]
     }
   ];
-  
-  // Simplify animation - less frequent changes
+
+  // Animation for cycling through examples
   useEffect(() => {
     const timer = setInterval(() => {
-      setAnimationStep((prev) => (prev + 1) % workActivities.length);
-    }, 6000); // Increased from 4000ms to 6000ms
+      setAnimationStep((prev) => (prev + 1) % comparisonData.length);
+    }, 8000); // Slower cycling for better readability
     
     return () => clearInterval(timer);
-  }, []);
-
-  // Handle responsive layout
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Animation for hero when scrolled into view
@@ -232,7 +86,7 @@ const Hero = () => {
           if (entry.isIntersecting) {
             entry.target.classList.add('hero-animate');
             
-            // Animate split screen elements
+            // Animate elements
             const elements = entry.target.querySelectorAll('.animate-element');
             elements.forEach((element, index) => {
               setTimeout(() => {
@@ -264,31 +118,54 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full py-12 sm:py-16 md:py-20">
         <div className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 animate-fade-in leading-tight">
-            <span className="inline-block animate-slide-up">Document Your Professional Journey</span>
-            <span className="inline-block animate-slide-up delay-100">As It Happens</span>
+            <span className="inline-block animate-slide-up">Chronicle Your Professional Journey</span>
+            <span className="inline-block animate-slide-up delay-100">Not Just List It</span>
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
-            Turn your daily work into a verified professional story
+            See how InChronicle transforms generic resume entries into rich, verifiable professional stories
           </p>
           
-          {/* Split Screen Visualization */}
-          <div className="flex flex-col md:flex-row gap-8 mb-12 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
-            {/* Left side - Artistic representation of professional work */}
-            <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
-              <div className="relative bg-gray-100 p-3 border-b border-gray-200">
-                <h3 className="text-center text-base font-semibold text-gray-700">
-                  {workActivities[animationStep].profession} at Work
+          {/* Comparison Section */}
+          <div className="flex flex-col lg:flex-row gap-8 mb-12 opacity-0 animate-fade-in" style={{animationDelay: '500ms', animationFillMode: 'forwards'}}>
+            {/* Left side - Traditional CV */}
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
+              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                <h3 className="text-base font-semibold text-gray-700">
+                  Traditional Resume Entry
                 </h3>
               </div>
               
-              <div className="h-[300px] sm:h-[350px] overflow-hidden">
-                {workActivities[animationStep].workContent}
+              <div className="p-5 text-left">
+                <div className="mb-4 pb-4 border-b border-gray-100">
+                  <h4 className="font-medium text-lg mb-1">Senior Developer</h4>
+                  <div className="text-sm text-gray-600">TechCorp Inc, 2023-2025</div>
+                </div>
+                
+                <ul className="pl-5 list-disc text-sm text-gray-700 space-y-2">
+                  <li>Led development of e-commerce platform optimization project</li>
+                  <li>Improved site performance and reduced load times</li>
+                  <li>Worked with frontend and UX teams on various projects</li>
+                  <li>Utilized React.js and TypeScript for application development</li>
+                  <li>Received positive feedback from management</li>
+                </ul>
+                
+                <div className="mt-6 bg-gray-50 rounded p-3 border border-gray-100">
+                  <div className="text-xs text-gray-400 mb-1">The Problem With Traditional Resumes</div>
+                  <div className="text-sm text-gray-600">
+                    <ul className="pl-4 list-disc space-y-1">
+                      <li>Generic descriptions without specifics</li>
+                      <li>Unverifiable claims and accomplishments</li>
+                      <li>No breakdown of actual contributions</li>
+                      <li>Missing measurable impacts and results</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             
-            {/* Right side - InChronicle documentation */}
-            <div className="w-full md:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
+            {/* Right side - InChronicle Entry */}
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
               <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
                 <div className="flex items-center justify-between">
                   <svg 
@@ -305,135 +182,101 @@ const Hero = () => {
                   
                   <div className="flex items-center gap-2">
                     <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Clock className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Real-time</span>
-                    </div>
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Check className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Validated</span>
+                      <span className="text-xs font-medium text-primary">Verified</span>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="p-4 h-[300px] sm:h-[350px] overflow-auto">
-                {/* Enhanced chronicle entry with all requested elements */}
-                <div className="border-l-4 border-primary pl-3 pb-3">
-                  {/* Title and date */}
-                  <div className="flex justify-between items-start mb-3">
-                    <div className="font-medium text-sm">{workActivities[animationStep].title}</div>
-                    <div className="text-xs text-gray-500">
-                      {animationStep === 0 ? "April 10, 2025" : 
-                       animationStep === 1 ? "April 8, 2025" : 
-                       animationStep === 2 ? "April 6, 2025" : 
-                       "April 3, 2025"}
+              <div className="p-5 text-left">
+                {/* Project header with trophy icon */}
+                <div className="flex items-start">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                    <Award className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
+                    <div className="flex items-center text-sm text-gray-600 mt-1">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{comparisonData[animationStep].date}</span>
+                      <span className="mx-2">•</span>
+                      <span className="flex items-center text-green-600">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        {comparisonData[animationStep].status}
+                      </span>
                     </div>
                   </div>
-                  
-                  {/* Description */}
-                  <div className="mt-2 text-xs text-gray-600 mb-3 text-left">
-                    {workActivities[animationStep].description}
+                </div>
+                
+                {/* Skills */}
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {comparisonData[animationStep].skills.map((skill, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                  ))}
+                </div>
+                
+                {/* Impact */}
+                <div className="mt-4 bg-gray-50 p-3 rounded-md">
+                  <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
+                  <div className="text-sm text-gray-600">
+                    {comparisonData[animationStep].impact}
                   </div>
-                  
-                  {/* Professional achievement */}
-                  <div className="mb-3 text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Achievement:</div>
-                    <div className="text-xs text-gray-600">
-                      {workActivities[animationStep].achievements}
-                    </div>
+                </div>
+                
+                {/* Related Journal Entries */}
+                <div className="mt-4">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
+                  <div className="space-y-2">
+                    {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
+                      <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
+                        <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                        <span>{entry}</span>
+                        <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                      </div>
+                    ))}
                   </div>
-                  
-                  {/* Collaborators */}
-                  <div className="mb-3 text-left">
-                    <div className="text-xs font-medium text-gray-700 mb-1">Collaborated with:</div>
-                    <div className="flex flex-wrap gap-1">
-                      {workActivities[animationStep].collaborators.map((collaborator, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded-full bg-blue-50 text-blue-700 text-xs">{collaborator}</span>
-                      ))}
-                    </div>
+                </div>
+                
+                {/* Collaborators */}
+                <div className="mt-4">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <Users className="w-4 h-4 mr-1" />
+                    <span>Collaborators</span>
                   </div>
-                  
-                  {/* Stakeholders and Validators (combined) */}
-                  <div className="mb-3 text-left">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="text-xs font-medium text-gray-700 mb-1">Key Stakeholders:</div>
-                        <div className="flex flex-wrap gap-1">
-                          {workActivities[animationStep].stakeholders.map((stakeholder, idx) => (
-                            <span key={idx} className="px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">{stakeholder}</span>
-                          ))}
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].collaborators.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
                         </div>
                       </div>
-                      
-                      <div className="flex-1 ml-2">
-                        <div className="text-xs font-medium text-gray-700 mb-1">Validated by:</div>
-                        <div className="flex flex-wrap gap-1">
-                          {animationStep > 0 ? (
-                            <>
-                              <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">{validations[0].name}</span>
-                              {animationStep > 1 && (
-                                <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">{validations[1].name}</span>
-                              )}
-                              {animationStep > 1 && (
-                                <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs">+3 more</span>
-                              )}
-                            </>
-                          ) : (
-                            <span className="px-2 py-1 rounded-full bg-gray-100 text-gray-400 text-xs">Pending validation</span>
-                          )}
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Reviewers */}
+                <div className="mt-3">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <CheckCircle className="w-4 h-4 mr-1" />
+                    <span>Validated by</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].reviewers.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                  
-                  {/* Skills and Impact as expandable buttons */}
-                  <div className="flex gap-2 text-left mt-4">
-                    <button 
-                      className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${showSkills ? 'bg-primary text-white' : 'bg-primary/10 text-primary hover:bg-primary/20'}`}
-                      onClick={() => {
-                        setShowSkills(!showSkills);
-                        if (!showSkills) setShowImpact(false);
-                      }}
-                    >
-                      {showSkills ? <ChevronDown className="w-3 h-3 mr-1" /> : <ChevronRight className="w-3 h-3 mr-1" />}
-                      Skills
-                    </button>
-                    
-                    <button 
-                      className={`flex items-center px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${showImpact ? 'bg-primary text-white' : 'bg-primary/10 text-primary hover:bg-primary/20'}`}
-                      onClick={() => {
-                        setShowImpact(!showImpact);
-                        if (!showImpact) setShowSkills(false);
-                      }}
-                    >
-                      {showImpact ? <ChevronDown className="w-3 h-3 mr-1" /> : <ChevronRight className="w-3 h-3 mr-1" />}
-                      Impact
-                    </button>
-                  </div>
-                  
-                  {/* Expanded skills section */}
-                  {showSkills && (
-                    <div className="mt-2 mb-3 p-2 bg-gray-50 rounded-md border border-gray-100 text-left">
-                      <div className="flex flex-wrap gap-1">
-                        {workActivities[animationStep].skills.map((skill, idx) => (
-                          <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Expanded impact section */}
-                  {showImpact && (
-                    <div className="mt-2 p-2 bg-gray-50 rounded-md border border-gray-100 text-left">
-                      <div className="text-xs text-gray-600">
-                        {workActivities[animationStep].impact}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
@@ -447,11 +290,6 @@ const Hero = () => {
             <button className="px-8 py-3 bg-white text-primary font-bold rounded-md border-2 border-primary hover:bg-primary/5 transition-colors w-full sm:w-auto text-lg">
               Watch Demo
             </button>
-          </div>
-          
-          {/* Trust indicators - simplified */}
-          <div className="mt-10 flex flex-wrap justify-center gap-8 animate-fade-in opacity-0" style={{animationDelay: '800ms', animationFillMode: 'forwards'}}>
-            {/* Removed trust indicators - now appearing in the header */}
           </div>
         </div>
       </div>
