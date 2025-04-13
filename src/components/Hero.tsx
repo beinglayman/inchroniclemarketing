@@ -173,7 +173,7 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full py-12 sm:py-16 md:py-20">
         <div className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 animate-fade-in leading-tight">
-            <span className="inline-block animate-slide-up">Build trust through your professional journal</span><br/>
+            <span className="inline-block animate-slide-up">Build trust through your professional journey</span><br/>
             <span className="inline-block animate-slide-up delay-100">Not Resume</span>
           </h1>
           
