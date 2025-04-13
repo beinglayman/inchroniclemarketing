@@ -173,8 +173,8 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full py-12 sm:py-16 md:py-20">
         <div className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 animate-fade-in leading-tight">
-            <span className="inline-block animate-slide-up">Chronicle Your Professional Journey,</span>
-            <span className="inline-block animate-slide-up delay-100 mt-1 sm:mt-2">Not Just List It</span>
+            <span className="inline-block animate-slide-up">Chronicle Your Professional Journey</span>
+            <span className="inline-block animate-slide-up delay-100">Not Just List It</span>
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
@@ -243,16 +243,7 @@ const Hero = () => {
                   
                   <div className="flex items-center gap-2">
                     <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Clock className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Real-time</span>
-                    </div>
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Check className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Validated</span>
+                      <span className="text-xs font-medium text-primary">Verified</span>
                     </div>
                   </div>
                 </div>
