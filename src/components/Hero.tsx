@@ -369,9 +369,6 @@ const Hero = () => {
             <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg">
               Start Your Chronicle
             </button>
-            /* <button className="px-8 py-3 bg-white text-primary font-bold rounded-md border-2 border-primary hover:bg-primary/5 transition-colors w-full sm:w-auto text-lg">
-              Watch Demo
-            </button> */
           </div>
         </div>
       </div>
