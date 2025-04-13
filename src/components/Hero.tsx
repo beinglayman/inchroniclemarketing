@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, CheckCircle, ChevronRight, Users, Award, FileText, X } from 'lucide-react';
+import { Calendar, CheckCircle, ChevronRight, Users, Award, FileText, X, Clock, Check } from 'lucide-react';
 
 const Hero = () => {
   const [animationStep, setAnimationStep] = useState(0);
@@ -243,7 +243,16 @@ const Hero = () => {
                   
                   <div className="flex items-center gap-2">
                     <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <span className="text-xs font-medium text-primary">Verified</span>
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Clock className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Real-time</span>
+                    </div>
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Check className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Validated</span>
                     </div>
                   </div>
                 </div>
