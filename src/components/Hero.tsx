@@ -178,7 +178,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
-            Let InChronicle tell your professional story through professional timeline that speaks louder than words in your CV
+            Let InChronicle tell your professional story through a timeline that speaks louder than words in your CV
           </p>
           
           {/* Comparison Section */}
