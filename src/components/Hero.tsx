@@ -173,8 +173,8 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto w-full py-12 sm:py-16 md:py-20">
         <div className="text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 animate-fade-in leading-tight">
-            <span className="inline-block animate-slide-up">Chronicle Your Professional Journey</span>
-            <span className="inline-block animate-slide-up delay-100">Not Just List It</span>
+            <span className="inline-block animate-slide-up">Build trust through your work, </span>
+            <span className="inline-block animate-slide-up delay-100"> <br/> Not CV</span>
           </h1>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto animate-fade-in opacity-0" style={{animationDelay: '400ms', animationFillMode: 'forwards'}}>
