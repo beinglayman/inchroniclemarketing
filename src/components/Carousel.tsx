@@ -89,7 +89,7 @@ const Carousel = () => {
                     <button className="mx-1 px-3 py-1 bg-white text-primary rounded-md hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center">
                       {item.buttonText}
                     </button>
-                    <span>{item.textAfter}</span>
+                    <span> &npsp; {item.textAfter}</span>
                   </h2>
                 </div>
                 {/* Underline animation */}
