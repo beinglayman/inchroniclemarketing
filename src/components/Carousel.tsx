@@ -11,22 +11,22 @@ const carouselItems = [
   },
   {
     textBefore: "Did something incredible? ",
-    buttonText: "InChronicle",
-    textAfter: " it.",
+    buttonText: "InChronicle your work!",
+    textAfter: "",
     icon: Star,
     color: "text-blue-300"
   },
   {
     textBefore: "Achieved something great? ",
-    buttonText: "InChronicle",
-    textAfter: " it.",
+    buttonText: "InChronicle your achievements!",
+    textAfter: "",
     icon: Trophy,
     color: "text-green-300"
   },
   {
     textBefore: "Had a hard day at work? ",
-    buttonText: "InChronicle",
-    textAfter: " your struggles.",
+    buttonText: "InChronicle your struggles!",
+    textAfter: "",
     icon: Award,
     color: "text-purple-300"
   }
@@ -89,7 +89,7 @@ const Carousel = () => {
                     <button className="mx-1 px-3 py-1 bg-white text-primary rounded-md hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center">
                       {item.buttonText}
                     </button>
-                    <span> &npsp; {item.textAfter}</span>
+                    <span>{item.textAfter}</span>
                   </h2>
                 </div>
                 {/* Underline animation */}
