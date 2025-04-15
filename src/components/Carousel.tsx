@@ -4,8 +4,8 @@ import { ChevronLeft, ChevronRight, Star, Award, Trophy, BookOpen } from 'lucide
 const carouselItems = [
   {
     textBefore: "",
-    buttonText: "InChronicle",
-    textAfter: " your incredible journey.",
+    buttonText: "InChronicle your incredible journey!",
+    textAfter: "",
     icon: BookOpen,
     color: "text-yellow-300"
   },
