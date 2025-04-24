@@ -161,158 +161,6 @@ const Hero = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Inject the CSS styles when component mounts
-  useEffect(() => {
-    // Create style element
-    const styleElement = document.createElement('style');
-    styleElement.type = 'text/css';
-    styleElement.innerHTML = `
-      @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes slide-up {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      .animate-fade-in {
-        animation: fade-in 0.8s ease-out forwards;
-      }
-
-      .animate-slide-up {
-        animation: slide-up 0.8s ease-out forwards;
-      }
-
-      .delay-100 {
-        animation-delay: 100ms;
-      }
-
-      .hero-animate .animate-element {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-      }
-
-      .hero-animate .animate-element.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Purple Glittering AI Border Animation */
-      .ai-border-wrapper {
-        position: relative;
-        border-radius: 0.75rem;
-        padding: 2px;
-        overflow: hidden;
-        background: linear-gradient(125deg, transparent, rgba(93, 37, 159, 0.2), rgba(93, 37, 159, 0.4), rgba(93, 37, 159, 0.2), transparent);
-        background-size: 400% 400%;
-        animation: ai-border-gradient 8s ease infinite;
-      }
-
-      .ai-border-wrapper::before {
-        content: '';
-        position: absolute;
-        top: -3px;
-        left: -3px;
-        right: -3px;
-        bottom: -3px;
-        z-index: -1;
-        background: linear-gradient(125deg, transparent, rgba(93, 37, 159, 0.15), rgba(93, 37, 159, 0.3), rgba(93, 37, 159, 0.15), transparent);
-        background-size: 500% 500%;
-        animation: ai-border-gradient 10s linear infinite;
-        filter: blur(8px);
-        border-radius: 0.75rem;
-      }
-
-      .ai-border-inner {
-        background-color: white;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
-      }
-
-      @keyframes ai-border-gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .ai-sparkle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: white;
-        box-shadow: 0 0 6px 2px rgba(93, 37, 159, 0.4);
-        opacity: 0;
-      }
-
-      .ai-sparkle:nth-child(1) {
-        top: 10%;
-        left: 5%;
-        animation: sparkle 3s ease-in-out infinite;
-      }
-
-      .ai-sparkle:nth-child(2) {
-        top: 90%;
-        left: 15%;
-        animation: sparkle 4s ease-in-out 0.5s infinite;
-      }
-
-      .ai-sparkle:nth-child(3) {
-        top: 20%;
-        right: 5%;
-        animation: sparkle 3.5s ease-in-out 1s infinite;
-      }
-
-      .ai-sparkle:nth-child(4) {
-        top: 80%;
-        right: 10%;
-        animation: sparkle 4.5s ease-in-out 1.5s infinite;
-      }
-
-      .ai-sparkle:nth-child(5) {
-        top: 40%;
-        left: 2%;
-        animation: sparkle 5s ease-in-out 0.7s infinite;
-      }
-
-      .ai-sparkle:nth-child(6) {
-        top: 60%;
-        right: 3%;
-        animation: sparkle 3.5s ease-in-out 1.2s infinite;
-      }
-
-      @keyframes sparkle {
-        0%, 100% { 
-          opacity: 0;
-          transform: scale(0.5); 
-        }
-        50% { 
-          opacity: 0.8;
-          transform: scale(1.2); 
-        }
-      }
-    `;
-    
-    // Append to head
-    document.head.appendChild(styleElement);
-    
-    // Clean up
-    return () => {
-      document.head.removeChild(styleElement);
-    };
-  }, []);
-
   return (
     <div 
       ref={heroRef}
@@ -377,137 +225,127 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Right side - InChronicle Entry with NEW glittering purple AI border */}
-            <div className="w-full lg:w-1/2 animate-element ai-border-wrapper">
-              {/* Sparkle elements */}
-              <div className="ai-sparkle"></div>
-              <div className="ai-sparkle"></div>
-              <div className="ai-sparkle"></div>
-              <div className="ai-sparkle"></div>
-              <div className="ai-sparkle"></div>
-              <div className="ai-sparkle"></div>
+            {/* Right side - InChronicle Entry */}
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
+              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                <div className="flex items-center justify-between">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 1200 150" 
+                    id="desktop-logo"
+                    style={{ height: "32px", width: "auto" }}
+                    className="h-8"
+                  >
+                    <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
+                    <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
+                    <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
+                  </svg>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Clock className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Real-time</span>
+                    </div>
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Check className="w-2 h-2 text-primary" />
+                      </div>
+                      <span className="text-xs font-medium">Validated</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               
-              <div className="ai-border-inner shadow-xl">
-                <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
-                  <div className="flex items-center justify-between">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      viewBox="0 0 1200 150" 
-                      id="desktop-logo"
-                      style={{ height: "32px", width: "auto" }}
-                      className="h-8"
-                    >
-                      <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
-                      <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
-                      <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
-                    </svg>
-                    
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                          <Clock className="w-2 h-2 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium">Real-time</span>
-                      </div>
-                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                          <Check className="w-2 h-2 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium">Validated</span>
-                      </div>
+              <div className="p-5 text-left">
+                {/* Project header with trophy icon */}
+                <div className="flex items-start">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                    <Award className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
+                    <div className="flex items-center text-sm text-gray-600 mt-1">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{comparisonData[animationStep].date}</span>
+                      <span className="mx-2">•</span>
+                      <span className="flex items-center text-green-600">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        {comparisonData[animationStep].status}
+                      </span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="p-5 text-left">
-                  {/* Project header with trophy icon */}
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
-                      <Award className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
-                      <div className="flex items-center text-sm text-gray-600 mt-1">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        <span>{comparisonData[animationStep].date}</span>
-                        <span className="mx-2">•</span>
-                        <span className="flex items-center text-green-600">
-                          <CheckCircle className="w-4 h-4 mr-1" />
-                          {comparisonData[animationStep].status}
-                        </span>
-                      </div>
-                    </div>
+                {/* Skills */}
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {comparisonData[animationStep].skills.map((skill, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                  ))}
+                </div>
+                
+                {/* Impact */}
+                <div className="mt-4 bg-gray-50 p-3 rounded-md">
+                  <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
+                  <div className="text-sm text-gray-600">
+                    {comparisonData[animationStep].impact}
                   </div>
-                  
-                  {/* Skills */}
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {comparisonData[animationStep].skills.map((skill, idx) => (
-                      <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                </div>
+                
+                {/* Related Journal Entries */}
+                <div className="mt-4">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
+                  <div className="space-y-2">
+                    {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
+                      <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
+                        <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                        <span>{entry}</span>
+                        <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                      </div>
                     ))}
                   </div>
-                  
-                  {/* Impact */}
-                  <div className="mt-4 bg-gray-50 p-3 rounded-md">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
-                    <div className="text-sm text-gray-600">
-                      {comparisonData[animationStep].impact}
-                    </div>
+                </div>
+                
+                {/* Collaborators */}
+                <div className="mt-4">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <Users className="w-4 h-4 mr-1" />
+                    <span>Collaborators</span>
                   </div>
-                  
-                  {/* Related Journal Entries */}
-                  <div className="mt-4">
-                    <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
-                    <div className="space-y-2">
-                      {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
-                        <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
-                          <FileText className="w-4 h-4 text-gray-400 mr-2" />
-                          <span>{entry}</span>
-                          <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].collaborators.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
                         </div>
-                      ))}
-                    </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  
-                  {/* Collaborators */}
-                  <div className="mt-4">
-                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                      <Users className="w-4 h-4 mr-1" />
-                      <span>Collaborators</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {comparisonData[animationStep].collaborators.map((person, idx) => (
-                        <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
-                          <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
-                            {person.name.charAt(0)}
-                          </div>
-                          <div>
-                            <div className="text-xs font-medium">{person.name}</div>
-                            <div className="text-xs text-gray-500">{person.role}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                </div>
+                
+                {/* Reviewers */}
+                <div className="mt-3">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <CheckCircle className="w-4 h-4 mr-1" />
+                    <span>Validated by</span>
                   </div>
-                  
-                  {/* Reviewers */}
-                  <div className="mt-3">
-                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                      <CheckCircle className="w-4 h-4 mr-1" />
-                      <span>Validated by</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {comparisonData[animationStep].reviewers.map((person, idx) => (
-                        <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
-                          <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
-                            {person.name.charAt(0)}
-                          </div>
-                          <div>
-                            <div className="text-xs font-medium">{person.name}</div>
-                            <div className="text-xs text-gray-500">{person.role}</div>
-                          </div>
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].reviewers.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
                         </div>
-                      ))}
-                    </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -537,5 +375,41 @@ const Hero = () => {
     </div>
   );
 };
+
+// CSS animations to add to your global styles
+const globalStyles = `
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.hero-animate .animate-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hero-animate .animate-element.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+`;
 
 export default Hero;
