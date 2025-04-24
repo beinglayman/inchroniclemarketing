@@ -225,130 +225,139 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Right side - InChronicle Entry */}
-            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
-              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
-                <div className="flex items-center justify-between">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 1200 150" 
-                    id="desktop-logo"
-                    style={{ height: "32px", width: "auto" }}
-                    className="h-8"
-                  >
-                    <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
-                    <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
-                    <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
-                  </svg>
-                  
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Clock className="w-2 h-2 text-primary" />
+            {/* Right side - InChronicle Entry with animated glitter border */}
+            <div className="w-full lg:w-1/2 animate-element relative ai-border-container">
+              {/* Animated border with glow */}
+              <div className="absolute inset-0 rounded-xl ai-border"></div>
+              
+              {/* Content container */}
+              <div className="bg-white rounded-xl shadow-xl overflow-hidden relative z-10">
+                <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                  <div className="flex items-center justify-between">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      viewBox="0 0 1200 150" 
+                      id="desktop-logo"
+                      style={{ height: "32px", width: "auto" }}
+                      className="h-8"
+                    >
+                      <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
+                      <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
+                      <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
+                    </svg>
+                    
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                          <Clock className="w-2 h-2 text-primary" />
+                        </div>
+                        <span className="text-xs font-medium">Real-time</span>
                       </div>
-                      <span className="text-xs font-medium">Real-time</span>
+                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                          <Check className="w-2 h-2 text-primary" />
+                        </div>
+                        <span className="text-xs font-medium">Validated</span>
+                      </div>
                     </div>
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Check className="w-2 h-2 text-primary" />
+                  </div>
+                </div>
+                
+                <div className="p-5 text-left">
+                  {/* Project header with trophy icon */}
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Award className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
+                      <div className="flex items-center text-sm text-gray-600 mt-1">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span>{comparisonData[animationStep].date}</span>
+                        <span className="mx-2">•</span>
+                        <span className="flex items-center text-green-600">
+                          <CheckCircle className="w-4 h-4 mr-1" />
+                          {comparisonData[animationStep].status}
+                        </span>
                       </div>
-                      <span className="text-xs font-medium">Validated</span>
+                    </div>
+                  </div>
+                  
+                  {/* Skills */}
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {comparisonData[animationStep].skills.map((skill, idx) => (
+                      <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                    ))}
+                  </div>
+                  
+                  {/* Impact */}
+                  <div className="mt-4 bg-gray-50 p-3 rounded-md">
+                    <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
+                    <div className="text-sm text-gray-600">
+                      {comparisonData[animationStep].impact}
+                    </div>
+                  </div>
+                  
+                  {/* Related Journal Entries */}
+                  <div className="mt-4">
+                    <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
+                    <div className="space-y-2">
+                      {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
+                        <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
+                          <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                          <span>{entry}</span>
+                          <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Collaborators */}
+                  <div className="mt-4">
+                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                      <Users className="w-4 h-4 mr-1" />
+                      <span>Collaborators</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {comparisonData[animationStep].collaborators.map((person, idx) => (
+                        <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
+                          <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
+                            {person.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium">{person.name}</div>
+                            <div className="text-xs text-gray-500">{person.role}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Reviewers */}
+                  <div className="mt-3">
+                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      <span>Validated by</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {comparisonData[animationStep].reviewers.map((person, idx) => (
+                        <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
+                          <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
+                            {person.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium">{person.name}</div>
+                            <div className="text-xs text-gray-500">{person.role}</div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="p-5 text-left">
-                {/* Project header with trophy icon */}
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
-                    <Award className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
-                    <div className="flex items-center text-sm text-gray-600 mt-1">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      <span>{comparisonData[animationStep].date}</span>
-                      <span className="mx-2">•</span>
-                      <span className="flex items-center text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-1" />
-                        {comparisonData[animationStep].status}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Skills */}
-                <div className="mt-3 flex flex-wrap gap-1">
-                  {comparisonData[animationStep].skills.map((skill, idx) => (
-                    <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                  ))}
-                </div>
-                
-                {/* Impact */}
-                <div className="mt-4 bg-gray-50 p-3 rounded-md">
-                  <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
-                  <div className="text-sm text-gray-600">
-                    {comparisonData[animationStep].impact}
-                  </div>
-                </div>
-                
-                {/* Related Journal Entries */}
-                <div className="mt-4">
-                  <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
-                  <div className="space-y-2">
-                    {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
-                      <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
-                        <FileText className="w-4 h-4 text-gray-400 mr-2" />
-                        <span>{entry}</span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Collaborators */}
-                <div className="mt-4">
-                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                    <Users className="w-4 h-4 mr-1" />
-                    <span>Collaborators</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {comparisonData[animationStep].collaborators.map((person, idx) => (
-                      <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
-                        <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
-                          {person.name.charAt(0)}
-                        </div>
-                        <div>
-                          <div className="text-xs font-medium">{person.name}</div>
-                          <div className="text-xs text-gray-500">{person.role}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Reviewers */}
-                <div className="mt-3">
-                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    <span>Validated by</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {comparisonData[animationStep].reviewers.map((person, idx) => (
-                      <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
-                        <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
-                          {person.name.charAt(0)}
-                        </div>
-                        <div>
-                          <div className="text-xs font-medium">{person.name}</div>
-                          <div className="text-xs text-gray-500">{person.role}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {/* AI glitter particles */}
+              <div className="absolute inset-0 ai-particles"></div>
             </div>
           </div>
           
@@ -409,6 +418,115 @@ const globalStyles = `
 .hero-animate .animate-element.animate-in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* AI Border and Glitter Effects */
+.ai-border-container {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ai-border {
+  position: absolute;
+  inset: -3px; /* Border width */
+  border-radius: 0.75rem; /* Matching component's border radius */
+  background: linear-gradient(
+    45deg,
+    rgba(93, 37, 159, 0.6),  /* Primary purple color with transparency */
+    rgba(135, 60, 220, 0.7),
+    rgba(180, 90, 255, 0.8),
+    rgba(200, 100, 255, 0.7),
+    rgba(130, 65, 200, 0.6)
+  );
+  z-index: 0;
+  animation: border-rotate 8s linear infinite, border-glow 3s ease-in-out infinite alternate;
+  filter: blur(3px);
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes border-glow {
+  0% {
+    filter: blur(3px) brightness(1);
+    box-shadow: 0 0 5px rgba(93, 37, 159, 0.3), 0 0 15px rgba(93, 37, 159, 0.2);
+  }
+  100% {
+    filter: blur(3px) brightness(1.3);
+    box-shadow: 0 0 10px rgba(93, 37, 159, 0.5), 0 0 25px rgba(93, 37, 159, 0.4), 0 0 40px rgba(93, 37, 159, 0.2);
+  }
+}
+
+/* AI Particles effect */
+.ai-particles {
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 0.75rem;
+}
+
+.ai-particles::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  background: 
+    radial-gradient(circle at 50% 120%, rgba(93, 37, 159, 0) 0%, rgba(93, 37, 159, 0) 65%, rgba(93, 37, 159, 0.4) 80%, rgba(93, 37, 159, 0) 100%), 
+    radial-gradient(circle at 20% 50%, rgba(150, 90, 250, 0) 0%, rgba(150, 90, 250, 0) 60%, rgba(150, 90, 250, 0.6) 70%, rgba(150, 90, 250, 0) 80%),
+    radial-gradient(circle at 80% 80%, rgba(170, 110, 240, 0) 0%, rgba(170, 110, 240, 0) 60%, rgba(170, 110, 240, 0.5) 70%, rgba(170, 110, 240, 0) 80%);
+  animation: particles-move 15s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes particles-move {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Additional shimmer effect */
+.ai-border-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 6s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 `;
 
