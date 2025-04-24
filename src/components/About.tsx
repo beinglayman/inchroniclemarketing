@@ -34,7 +34,7 @@ const About = () => {
     {
       name: "Honey Arora",
       role: "Founder",
-      bio: "18+ years in Software development, Product management, and Management consulting roles. Ex EY, Ex Infoedge"
+      bio: "17+ years in Software development, Product management, and Management consulting roles. Ex EY, Ex Infoedge"
     },
     {
       name: "Ashish Gupta",

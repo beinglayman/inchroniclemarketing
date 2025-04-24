@@ -12,13 +12,13 @@ const testimonials = [
     quote: "As a hiring manager, the verified achievements make it so much easier to evaluate candidates accurately.",
     author: "Michael Rodriguez",
     role: "Engineering Director",
-    image: "/img/photo-1472099645785-5658abf4ff4e.jpeg"
+    image: "/src/img/photo-1472099645785-5658abf4ff4e.jpeg"
   },
   {
     quote: "Finally, a platform that values real work over self-promotion. This is the future of professional networking.",
     author: "Emily Thompson",
     role: "Product Manager",
-    image: "/img/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150"
+    image: "/src/img/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150"
   }
 ];
 
