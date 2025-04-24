@@ -226,126 +226,142 @@ const Hero = () => {
             </div>
             
             {/* Right side - InChronicle Entry */}
-            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
-              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
-                <div className="flex items-center justify-between">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 1200 150" 
-                    id="desktop-logo"
-                    style={{ height: "32px", width: "auto" }}
-                    className="h-8"
-                  >
-                    <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
-                    <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
-                    <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
-                  </svg>
-                  
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Clock className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Real-time</span>
-                    </div>
-                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                        <Check className="w-2 h-2 text-primary" />
-                      </div>
-                      <span className="text-xs font-medium">Validated</span>
-                    </div>
-                  </div>
-                </div>
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element relative group">
+              {/* Animated border */}
+              <div className="absolute inset-0 rounded-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 animate-gradient-x"></div>
+                <div className="absolute inset-[1px] bg-white rounded-xl"></div>
               </div>
               
-              <div className="p-5 text-left">
-                {/* Project header with trophy icon */}
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
-                    <Award className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
-                    <div className="flex items-center text-sm text-gray-600 mt-1">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      <span>{comparisonData[animationStep].date}</span>
-                      <span className="mx-2">•</span>
-                      <span className="flex items-center text-green-600">
-                        <CheckCircle className="w-4 h-4 mr-1" />
-                        {comparisonData[animationStep].status}
-                      </span>
+              {/* Glitter effect */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute w-2 h-2 bg-primary/30 rounded-full animate-glitter" style={{ top: '10%', left: '15%' }}></div>
+                <div className="absolute w-1.5 h-1.5 bg-primary/20 rounded-full animate-glitter" style={{ top: '30%', left: '85%', animationDelay: '1s' }}></div>
+                <div className="absolute w-1 h-1 bg-primary/25 rounded-full animate-glitter" style={{ top: '70%', left: '25%', animationDelay: '2s' }}></div>
+                <div className="absolute w-1.5 h-1.5 bg-primary/20 rounded-full animate-glitter" style={{ top: '85%', left: '75%', animationDelay: '1.5s' }}></div>
+              </div>
+
+              <div className="relative">
+                <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                  <div className="flex items-center justify-between">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      viewBox="0 0 1200 150" 
+                      id="desktop-logo"
+                      style={{ height: "32px", width: "auto" }}
+                      className="h-8"
+                    >
+                      <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
+                      <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
+                      <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
+                    </svg>
+                    
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                          <Clock className="w-2 h-2 text-primary" />
+                        </div>
+                        <span className="text-xs font-medium">Real-time</span>
+                      </div>
+                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                          <Check className="w-2 h-2 text-primary" />
+                        </div>
+                        <span className="text-xs font-medium">Validated</span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Skills */}
-                <div className="mt-3 flex flex-wrap gap-1">
-                  {comparisonData[animationStep].skills.map((skill, idx) => (
-                    <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                  ))}
-                </div>
-                
-                {/* Impact */}
-                <div className="mt-4 bg-gray-50 p-3 rounded-md">
-                  <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
-                  <div className="text-sm text-gray-600">
-                    {comparisonData[animationStep].impact}
-                  </div>
-                </div>
-                
-                {/* Related Journal Entries */}
-                <div className="mt-4">
-                  <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
-                  <div className="space-y-2">
-                    {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
-                      <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
-                        <FileText className="w-4 h-4 text-gray-400 mr-2" />
-                        <span>{entry}</span>
-                        <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                <div className="p-5 text-left">
+                  {/* Project header with trophy icon */}
+                  <div className="flex items-start">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Award className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
+                      <div className="flex items-center text-sm text-gray-600 mt-1">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span>{comparisonData[animationStep].date}</span>
+                        <span className="mx-2">•</span>
+                        <span className="flex items-center text-green-600">
+                          <CheckCircle className="w-4 h-4 mr-1" />
+                          {comparisonData[animationStep].status}
+                        </span>
                       </div>
+                    </div>
+                  </div>
+                  
+                  {/* Skills */}
+                  <div className="mt-3 flex flex-wrap gap-1">
+                    {comparisonData[animationStep].skills.map((skill, idx) => (
+                      <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
                     ))}
                   </div>
-                </div>
-                
-                {/* Collaborators */}
-                <div className="mt-4">
-                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                    <Users className="w-4 h-4 mr-1" />
-                    <span>Collaborators</span>
+                  
+                  {/* Impact */}
+                  <div className="mt-4 bg-gray-50 p-3 rounded-md">
+                    <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
+                    <div className="text-sm text-gray-600">
+                      {comparisonData[animationStep].impact}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {comparisonData[animationStep].collaborators.map((person, idx) => (
-                      <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
-                        <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
-                          {person.name.charAt(0)}
+                  
+                  {/* Related Journal Entries */}
+                  <div className="mt-4">
+                    <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
+                    <div className="space-y-2">
+                      {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
+                        <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
+                          <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                          <span>{entry}</span>
+                          <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
                         </div>
-                        <div>
-                          <div className="text-xs font-medium">{person.name}</div>
-                          <div className="text-xs text-gray-500">{person.role}</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-                
-                {/* Reviewers */}
-                <div className="mt-3">
-                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    <span>Validated by</span>
+                  
+                  {/* Collaborators */}
+                  <div className="mt-4">
+                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                      <Users className="w-4 h-4 mr-1" />
+                      <span>Collaborators</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {comparisonData[animationStep].collaborators.map((person, idx) => (
+                        <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
+                          <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
+                            {person.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium">{person.name}</div>
+                            <div className="text-xs text-gray-500">{person.role}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {comparisonData[animationStep].reviewers.map((person, idx) => (
-                      <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
-                        <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
-                          {person.name.charAt(0)}
+                  
+                  {/* Reviewers */}
+                  <div className="mt-3">
+                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      <span>Validated by</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {comparisonData[animationStep].reviewers.map((person, idx) => (
+                        <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
+                          <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
+                            {person.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="text-xs font-medium">{person.name}</div>
+                            <div className="text-xs text-gray-500">{person.role}</div>
+                          </div>
                         </div>
-                        <div>
-                          <div className="text-xs font-medium">{person.name}</div>
-                          <div className="text-xs text-gray-500">{person.role}</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -386,6 +402,26 @@ const globalStyles = `
 @keyframes slide-up {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glitter {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 8s ease infinite;
+}
+
+.animate-glitter {
+  animation: glitter 3s ease-in-out infinite;
 }
 
 .animate-fade-in {
