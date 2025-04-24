@@ -6,19 +6,19 @@ const testimonials = [
     quote: "InChronicle has transformed how I document my career. Every achievement is now verified and meaningful.",
     author: "Sarah Chen",
     role: "Senior Software Engineer",
-    image: "/img/photo1.jpeg"
+    image: "/img/photo3.jpeg"
   },
   {
     quote: "As a hiring manager, the verified achievements make it so much easier to evaluate candidates accurately.",
     author: "Michael Rodriguez",
     role: "Engineering Director",
-    image: "/img/photo2.jpeg"
+    image: "/img/photo1.jpeg"
   },
   {
     quote: "Finally, a platform that values real work over self-promotion. This is the future of professional networking.",
     author: "Emily Thompson",
     role: "Product Manager",
-    image: "/img/photo3.jpeg"
+    image: "/img/photo2.jpeg"
   }
 ];
 
