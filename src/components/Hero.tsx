@@ -166,99 +166,6 @@ const Hero = () => {
       ref={heroRef}
       className="relative pt-16 md:pt-24 flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6"
     >
-      {/* AI Border Animation SVGs */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Top Left Corner */}
-        <svg className="absolute top-0 left-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
-          <path 
-            className="ai-border-path" 
-            d="M0,20 Q0,0 20,0 L80,0" 
-            fill="none" 
-            stroke="#5D259F" 
-            strokeWidth="2"
-          />
-          <circle className="ai-border-node" cx="80" cy="0" r="3" fill="#5D259F" />
-        </svg>
-        
-        {/* Top Right Corner */}
-        <svg className="absolute top-0 right-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
-          <path 
-            className="ai-border-path" 
-            d="M100,20 Q100,0 80,0 L20,0" 
-            fill="none" 
-            stroke="#5D259F" 
-            strokeWidth="2"
-          />
-          <circle className="ai-border-node" cx="20" cy="0" r="3" fill="#5D259F" />
-        </svg>
-        
-        {/* Bottom Left Corner */}
-        <svg className="absolute bottom-0 left-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
-          <path 
-            className="ai-border-path" 
-            d="M0,80 Q0,100 20,100 L80,100" 
-            fill="none" 
-            stroke="#5D259F" 
-            strokeWidth="2"
-          />
-          <circle className="ai-border-node" cx="80" cy="100" r="3" fill="#5D259F" />
-        </svg>
-        
-        {/* Bottom Right Corner */}
-        <svg className="absolute bottom-0 right-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
-          <path 
-            className="ai-border-path" 
-            d="M100,80 Q100,100 80,100 L20,100" 
-            fill="none" 
-            stroke="#5D259F" 
-            strokeWidth="2"
-          />
-          <circle className="ai-border-node" cx="20" cy="100" r="3" fill="#5D259F" />
-        </svg>
-        
-        {/* AI Data Flow Lines - Left Side */}
-        <div className="absolute left-0 top-32 bottom-32 flex items-center">
-          <div className="ai-flow-line-vertical">
-            <div className="ai-flow-dot"></div>
-            <div className="ai-flow-dot" style={{animationDelay: '0.5s'}}></div>
-            <div className="ai-flow-dot" style={{animationDelay: '1s'}}></div>
-            <div className="ai-flow-dot" style={{animationDelay: '1.5s'}}></div>
-          </div>
-        </div>
-        
-        {/* AI Data Flow Lines - Right Side */}
-        <div className="absolute right-0 top-32 bottom-32 flex items-center">
-          <div className="ai-flow-line-vertical">
-            <div className="ai-flow-dot"></div>
-            <div className="ai-flow-dot" style={{animationDelay: '0.7s'}}></div>
-            <div className="ai-flow-dot" style={{animationDelay: '1.4s'}}></div>
-            <div className="ai-flow-dot" style={{animationDelay: '2.1s'}}></div>
-          </div>
-        </div>
-
-        {/* AI Circuit Pattern - Left */}
-        <svg className="absolute left-0 top-1/3 h-64" width="32" height="300" viewBox="0 0 32 300">
-          <path
-            className="ai-circuit-path"
-            d="M0,0 L10,0 Q20,0 20,10 L20,40 Q20,50 30,50 L32,50 M20,40 L20,80 Q20,90 30,90 L32,90 M20,80 L20,120 Q20,130 30,130 L32,130 M20,120 L20,150"
-            stroke="#5D259F" 
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
-
-        {/* AI Circuit Pattern - Right */}
-        <svg className="absolute right-0 bottom-1/3 h-64" width="32" height="300" viewBox="0 0 32 300">
-          <path
-            className="ai-circuit-path"
-            d="M32,150 L22,150 Q12,150 12,140 L12,110 Q12,100 2,100 L0,100 M12,110 L12,70 Q12,60 2,60 L0,60 M12,70 L12,30 Q12,20 2,20 L0,20 M12,30 L12,0"
-            stroke="#5D259F" 
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
-      </div>
-
       {/* Background embellishments */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
@@ -318,9 +225,12 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Right side - InChronicle Entry */}
-            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
-              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+            {/* Right side - InChronicle Entry with glittering purple AI border */}
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element relative ai-border-container">
+              {/* Animated AI border */}
+              <div className="ai-border-effect"></div>
+              
+              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left z-10">
                 <div className="flex items-center justify-between">
                   <svg 
                     xmlns="http://www.w3.org/2000/svg" 
@@ -351,7 +261,7 @@ const Hero = () => {
                 </div>
               </div>
               
-              <div className="p-5 text-left">
+              <div className="p-5 text-left relative z-10">
                 {/* Project header with trophy icon */}
                 <div className="flex items-start">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
@@ -459,12 +369,8 @@ const Hero = () => {
           
           {/* CTA Section */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in opacity-0" style={{animationDelay: '700ms', animationFillMode: 'forwards'}}>
-            <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg relative overflow-hidden group">
-              <span className="relative z-10">Start Your Chronicle</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute top-0 left-0 w-full h-full">
-                <div className="ai-pulse-effect"></div>
-              </div>
+            <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg">
+              Start Your Chronicle
             </button>
           </div>
         </div>
@@ -508,115 +414,138 @@ const globalStyles = `
   transform: translateY(0);
 }
 
-/* AI Border Animation */
-.ai-border-path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: ai-border-dash 3s ease-in-out infinite;
+/* Purple Glittering AI Border Animation */
+.ai-border-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-@keyframes ai-border-dash {
-  0% {
-    stroke-dashoffset: 100;
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -100;
-  }
+.ai-border-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.ai-border-node {
-  animation: ai-border-pulse 3s ease-in-out infinite;
+.ai-border-effect::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(125deg, transparent 20%, rgba(93, 37, 159, 0.1) 35%, rgba(93, 37, 159, 0.3) 50%, rgba(93, 37, 159, 0.1) 65%, transparent 80%);
+  animation: ai-border-pulse 4s linear infinite;
+  border-radius: inherit;
+}
+
+.ai-border-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  border-radius: inherit;
+  z-index: -1;
+  margin: 2px;
 }
 
 @keyframes ai-border-pulse {
-  0%, 100% {
-    transform: scale(1);
+  0% {
+    transform: rotate(0deg);
     opacity: 0.7;
   }
+  25% {
+    opacity: 0.8;
+  }
   50% {
-    transform: scale(1.5);
-    opacity: 1;
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.7;
   }
 }
 
-/* AI Data Flow Animation */
-.ai-flow-line-vertical {
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, #5D259F, transparent);
-  position: relative;
+/* Sparkle animation for border */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
-.ai-flow-dot {
+.ai-border-container::before {
+  content: '';
   position: absolute;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #5D259F;
-  left: -2px;
-  animation: ai-flow-move 3s linear infinite;
+  background-color: rgba(93, 37, 159, 0.7);
+  box-shadow: 0 0 4px 2px rgba(93, 37, 159, 0.3);
+  animation: sparkle 3s ease-in-out infinite;
+  animation-delay: calc(var(--delay) * 1s);
+  top: calc(var(--y) * 100%);
+  left: calc(var(--x) * 100%);
 }
 
-@keyframes ai-flow-move {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-/* AI Circuit Path Animation */
-.ai-circuit-path {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: ai-circuit-dash 8s linear infinite;
-}
-
-@keyframes ai-circuit-dash {
-  0% {
-    stroke-dashoffset: 300;
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -300;
-  }
-}
-
-/* AI Pulse Effect for CTA Button */
-.ai-pulse-effect {
+.ai-border-container::after {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(93, 37, 159, 0.7) 0%, rgba(93, 37, 159, 0) 70%);
-  transform: translate(-50%, -50%) scale(0);
-  animation: ai-pulse 2s ease-out infinite;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(150, 120, 220, 0.8);
+  box-shadow: 0 0 6px 2px rgba(180, 120, 220, 0.4);
+  animation: sparkle 4s ease-in-out infinite;
+  animation-delay: calc((var(--delay) + 1.5) * 1s);
+  top: calc(var(--y2) * 100%);
+  left: calc(var(--x2) * 100%);
+  z-index: 1;
 }
 
-@keyframes ai-pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-  }
+/* Generate multiple sparkles programmatically using CSS variables */
+.ai-border-container {
+  --x: 0.05;
+  --y: 0.1;
+  --x2: 0.95;
+  --y2: 0.9;
+  --delay: 0;
+}
+
+.ai-border-container:nth-child(1) {
+  --x: 0.1;
+  --y: 0.2;
+  --x2: 0.8;
+  --y2: 0.7;
+  --delay: 0.2;
+}
+
+.ai-border-container:nth-child(2) {
+  --x: 0.9;
+  --y: 0.15;
+  --x2: 0.2;
+  --y2: 0.85;
+  --delay: 0.5;
+}
+
+.ai-border-container:nth-child(3) {
+  --x: 0.15;
+  --y: 0.9;
+  --x2: 0.85;
+  --y2: 0.2;
+  --delay: 0.8;
+}
+
+.ai-border-container:nth-child(4) {
+  --x: 0.8;
+  --y: 0.8;
+  --x2: 0.25;
+  --y2: 0.25;
+  --delay: 1.1;
 }
 `;
 
