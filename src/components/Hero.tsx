@@ -166,6 +166,99 @@ const Hero = () => {
       ref={heroRef}
       className="relative pt-16 md:pt-24 flex flex-col justify-start bg-gradient-to-b from-primary/5 to-white overflow-hidden px-4 sm:px-6"
     >
+      {/* AI Border Animation SVGs */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top Left Corner */}
+        <svg className="absolute top-0 left-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
+          <path 
+            className="ai-border-path" 
+            d="M0,20 Q0,0 20,0 L80,0" 
+            fill="none" 
+            stroke="#5D259F" 
+            strokeWidth="2"
+          />
+          <circle className="ai-border-node" cx="80" cy="0" r="3" fill="#5D259F" />
+        </svg>
+        
+        {/* Top Right Corner */}
+        <svg className="absolute top-0 right-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
+          <path 
+            className="ai-border-path" 
+            d="M100,20 Q100,0 80,0 L20,0" 
+            fill="none" 
+            stroke="#5D259F" 
+            strokeWidth="2"
+          />
+          <circle className="ai-border-node" cx="20" cy="0" r="3" fill="#5D259F" />
+        </svg>
+        
+        {/* Bottom Left Corner */}
+        <svg className="absolute bottom-0 left-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
+          <path 
+            className="ai-border-path" 
+            d="M0,80 Q0,100 20,100 L80,100" 
+            fill="none" 
+            stroke="#5D259F" 
+            strokeWidth="2"
+          />
+          <circle className="ai-border-node" cx="80" cy="100" r="3" fill="#5D259F" />
+        </svg>
+        
+        {/* Bottom Right Corner */}
+        <svg className="absolute bottom-0 right-0 w-32 h-32 ai-border-animation" viewBox="0 0 100 100">
+          <path 
+            className="ai-border-path" 
+            d="M100,80 Q100,100 80,100 L20,100" 
+            fill="none" 
+            stroke="#5D259F" 
+            strokeWidth="2"
+          />
+          <circle className="ai-border-node" cx="20" cy="100" r="3" fill="#5D259F" />
+        </svg>
+        
+        {/* AI Data Flow Lines - Left Side */}
+        <div className="absolute left-0 top-32 bottom-32 flex items-center">
+          <div className="ai-flow-line-vertical">
+            <div className="ai-flow-dot"></div>
+            <div className="ai-flow-dot" style={{animationDelay: '0.5s'}}></div>
+            <div className="ai-flow-dot" style={{animationDelay: '1s'}}></div>
+            <div className="ai-flow-dot" style={{animationDelay: '1.5s'}}></div>
+          </div>
+        </div>
+        
+        {/* AI Data Flow Lines - Right Side */}
+        <div className="absolute right-0 top-32 bottom-32 flex items-center">
+          <div className="ai-flow-line-vertical">
+            <div className="ai-flow-dot"></div>
+            <div className="ai-flow-dot" style={{animationDelay: '0.7s'}}></div>
+            <div className="ai-flow-dot" style={{animationDelay: '1.4s'}}></div>
+            <div className="ai-flow-dot" style={{animationDelay: '2.1s'}}></div>
+          </div>
+        </div>
+
+        {/* AI Circuit Pattern - Left */}
+        <svg className="absolute left-0 top-1/3 h-64" width="32" height="300" viewBox="0 0 32 300">
+          <path
+            className="ai-circuit-path"
+            d="M0,0 L10,0 Q20,0 20,10 L20,40 Q20,50 30,50 L32,50 M20,40 L20,80 Q20,90 30,90 L32,90 M20,80 L20,120 Q20,130 30,130 L32,130 M20,120 L20,150"
+            stroke="#5D259F" 
+            strokeWidth="1.5"
+            fill="none"
+          />
+        </svg>
+
+        {/* AI Circuit Pattern - Right */}
+        <svg className="absolute right-0 bottom-1/3 h-64" width="32" height="300" viewBox="0 0 32 300">
+          <path
+            className="ai-circuit-path"
+            d="M32,150 L22,150 Q12,150 12,140 L12,110 Q12,100 2,100 L0,100 M12,110 L12,70 Q12,60 2,60 L0,60 M12,70 L12,30 Q12,20 2,20 L0,20 M12,30 L12,0"
+            stroke="#5D259F" 
+            strokeWidth="1.5"
+            fill="none"
+          />
+        </svg>
+      </div>
+
       {/* Background embellishments */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-primary/10 rounded-full blur-2xl"></div>
@@ -225,139 +318,130 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* Right side - InChronicle Entry with animated glitter border */}
-            <div className="w-full lg:w-1/2 animate-element relative ai-border-container">
-              {/* Animated border with glow */}
-              <div className="absolute inset-0 rounded-xl ai-border"></div>
-              
-              {/* Content container */}
-              <div className="bg-white rounded-xl shadow-xl overflow-hidden relative z-10">
-                <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
-                  <div className="flex items-center justify-between">
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      viewBox="0 0 1200 150" 
-                      id="desktop-logo"
-                      style={{ height: "32px", width: "auto" }}
-                      className="h-8"
-                    >
-                      <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
-                      <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
-                      <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
-                    </svg>
-                    
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                          <Clock className="w-2 h-2 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium">Real-time</span>
+            {/* Right side - InChronicle Entry */}
+            <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-xl overflow-hidden animate-element">
+              <div className="relative bg-gray-100 p-3 border-b border-gray-200 text-left">
+                <div className="flex items-center justify-between">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 1200 150" 
+                    id="desktop-logo"
+                    style={{ height: "32px", width: "auto" }}
+                    className="h-8"
+                  >
+                    <rect x="50" y="50" width="180" height="100" stroke="#5D259F" strokeWidth="3" fill="#5D259F" />
+                    <text x="225" y="140" fontFamily="Arial, sans-serif" fontSize="60" fontWeight="bold" fill="white" textAnchor="end">IN</text>
+                    <text x="235" y="140" fontFamily="Arial, sans-serif" fontSize="120" fill="#333333">CHRONICLE</text>
+                  </svg>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Clock className="w-2 h-2 text-primary" />
                       </div>
-                      <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
-                        <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
-                          <Check className="w-2 h-2 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium">Validated</span>
+                      <span className="text-xs font-medium">Real-time</span>
+                    </div>
+                    <div className="flex items-center bg-white px-2 py-1 rounded-md shadow-sm">
+                      <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center mr-1">
+                        <Check className="w-2 h-2 text-primary" />
                       </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-5 text-left">
-                  {/* Project header with trophy icon */}
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
-                      <Award className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
-                      <div className="flex items-center text-sm text-gray-600 mt-1">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        <span>{comparisonData[animationStep].date}</span>
-                        <span className="mx-2">•</span>
-                        <span className="flex items-center text-green-600">
-                          <CheckCircle className="w-4 h-4 mr-1" />
-                          {comparisonData[animationStep].status}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Skills */}
-                  <div className="mt-3 flex flex-wrap gap-1">
-                    {comparisonData[animationStep].skills.map((skill, idx) => (
-                      <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
-                    ))}
-                  </div>
-                  
-                  {/* Impact */}
-                  <div className="mt-4 bg-gray-50 p-3 rounded-md">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
-                    <div className="text-sm text-gray-600">
-                      {comparisonData[animationStep].impact}
-                    </div>
-                  </div>
-                  
-                  {/* Related Journal Entries */}
-                  <div className="mt-4">
-                    <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
-                    <div className="space-y-2">
-                      {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
-                        <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
-                          <FileText className="w-4 h-4 text-gray-400 mr-2" />
-                          <span>{entry}</span>
-                          <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Collaborators */}
-                  <div className="mt-4">
-                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                      <Users className="w-4 h-4 mr-1" />
-                      <span>Collaborators</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {comparisonData[animationStep].collaborators.map((person, idx) => (
-                        <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
-                          <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
-                            {person.name.charAt(0)}
-                          </div>
-                          <div>
-                            <div className="text-xs font-medium">{person.name}</div>
-                            <div className="text-xs text-gray-500">{person.role}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Reviewers */}
-                  <div className="mt-3">
-                    <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                      <CheckCircle className="w-4 h-4 mr-1" />
-                      <span>Validated by</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {comparisonData[animationStep].reviewers.map((person, idx) => (
-                        <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
-                          <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
-                            {person.name.charAt(0)}
-                          </div>
-                          <div>
-                            <div className="text-xs font-medium">{person.name}</div>
-                            <div className="text-xs text-gray-500">{person.role}</div>
-                          </div>
-                        </div>
-                      ))}
+                      <span className="text-xs font-medium">Validated</span>
                     </div>
                   </div>
                 </div>
               </div>
               
-              {/* AI glitter particles */}
-              <div className="absolute inset-0 ai-particles"></div>
+              <div className="p-5 text-left">
+                {/* Project header with trophy icon */}
+                <div className="flex items-start">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                    <Award className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg text-gray-900">{comparisonData[animationStep].title}</h3>
+                    <div className="flex items-center text-sm text-gray-600 mt-1">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{comparisonData[animationStep].date}</span>
+                      <span className="mx-2">•</span>
+                      <span className="flex items-center text-green-600">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        {comparisonData[animationStep].status}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Skills */}
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {comparisonData[animationStep].skills.map((skill, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs">{skill}</span>
+                  ))}
+                </div>
+                
+                {/* Impact */}
+                <div className="mt-4 bg-gray-50 p-3 rounded-md">
+                  <div className="text-sm font-medium text-gray-700 mb-1">Impact:</div>
+                  <div className="text-sm text-gray-600">
+                    {comparisonData[animationStep].impact}
+                  </div>
+                </div>
+                
+                {/* Related Journal Entries */}
+                <div className="mt-4">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Related Journal Entries</div>
+                  <div className="space-y-2">
+                    {comparisonData[animationStep].relatedEntries.map((entry, idx) => (
+                      <div key={idx} className="flex items-center text-sm border-b border-gray-100 pb-2">
+                        <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                        <span>{entry}</span>
+                        <ChevronRight className="w-4 h-4 text-gray-400 ml-auto" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Collaborators */}
+                <div className="mt-4">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <Users className="w-4 h-4 mr-1" />
+                    <span>Collaborators</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].collaborators.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-blue-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Reviewers */}
+                <div className="mt-3">
+                  <div className="flex items-center text-sm font-medium text-gray-700 mb-2">
+                    <CheckCircle className="w-4 h-4 mr-1" />
+                    <span>Validated by</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {comparisonData[animationStep].reviewers.map((person, idx) => (
+                      <div key={idx} className="flex items-center bg-green-50 px-2 py-1 rounded-md">
+                        <div className="w-6 h-6 rounded-full bg-green-200 flex items-center justify-center text-xs mr-1">
+                          {person.name.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="text-xs font-medium">{person.name}</div>
+                          <div className="text-xs text-gray-500">{person.role}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -375,8 +459,12 @@ const Hero = () => {
           
           {/* CTA Section */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in opacity-0" style={{animationDelay: '700ms', animationFillMode: 'forwards'}}>
-            <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg">
-              Start Your Chronicle
+            <button className="px-8 py-3 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-lg relative overflow-hidden group">
+              <span className="relative z-10">Start Your Chronicle</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute top-0 left-0 w-full h-full">
+                <div className="ai-pulse-effect"></div>
+              </div>
             </button>
           </div>
         </div>
@@ -420,112 +508,114 @@ const globalStyles = `
   transform: translateY(0);
 }
 
-/* AI Border and Glitter Effects */
-.ai-border-container {
-  position: relative;
-  transition: all 0.3s ease;
+/* AI Border Animation */
+.ai-border-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ai-border-dash 3s ease-in-out infinite;
 }
 
-.ai-border {
-  position: absolute;
-  inset: -3px; /* Border width */
-  border-radius: 0.75rem; /* Matching component's border radius */
-  background: linear-gradient(
-    45deg,
-    rgba(93, 37, 159, 0.6),  /* Primary purple color with transparency */
-    rgba(135, 60, 220, 0.7),
-    rgba(180, 90, 255, 0.8),
-    rgba(200, 100, 255, 0.7),
-    rgba(130, 65, 200, 0.6)
-  );
-  z-index: 0;
-  animation: border-rotate 8s linear infinite, border-glow 3s ease-in-out infinite alternate;
-  filter: blur(3px);
-}
-
-@keyframes border-rotate {
+@keyframes ai-border-dash {
   0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 300% 50%;
-  }
-}
-
-@keyframes border-glow {
-  0% {
-    filter: blur(3px) brightness(1);
-    box-shadow: 0 0 5px rgba(93, 37, 159, 0.3), 0 0 15px rgba(93, 37, 159, 0.2);
-  }
-  100% {
-    filter: blur(3px) brightness(1.3);
-    box-shadow: 0 0 10px rgba(93, 37, 159, 0.5), 0 0 25px rgba(93, 37, 159, 0.4), 0 0 40px rgba(93, 37, 159, 0.2);
-  }
-}
-
-/* AI Particles effect */
-.ai-particles {
-  overflow: hidden;
-  pointer-events: none;
-  border-radius: 0.75rem;
-}
-
-.ai-particles::before {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  right: -100%;
-  bottom: -100%;
-  background: 
-    radial-gradient(circle at 50% 120%, rgba(93, 37, 159, 0) 0%, rgba(93, 37, 159, 0) 65%, rgba(93, 37, 159, 0.4) 80%, rgba(93, 37, 159, 0) 100%), 
-    radial-gradient(circle at 20% 50%, rgba(150, 90, 250, 0) 0%, rgba(150, 90, 250, 0) 60%, rgba(150, 90, 250, 0.6) 70%, rgba(150, 90, 250, 0) 80%),
-    radial-gradient(circle at 80% 80%, rgba(170, 110, 240, 0) 0%, rgba(170, 110, 240, 0) 60%, rgba(170, 110, 240, 0.5) 70%, rgba(170, 110, 240, 0) 80%);
-  animation: particles-move 15s linear infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes particles-move {
-  0% {
-    transform: rotate(0deg) scale(1);
+    stroke-dashoffset: 100;
   }
   50% {
-    transform: rotate(180deg) scale(1.2);
+    stroke-dashoffset: 0;
   }
   100% {
-    transform: rotate(360deg) scale(1);
+    stroke-dashoffset: -100;
   }
 }
 
-/* Additional shimmer effect */
-.ai-border-container::after {
-  content: '';
+.ai-border-node {
+  animation: ai-border-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ai-border-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* AI Data Flow Animation */
+.ai-flow-line-vertical {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #5D259F, transparent);
+  position: relative;
+}
+
+.ai-flow-dot {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent,
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shimmer 6s linear infinite;
-  z-index: 2;
-  pointer-events: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #5D259F;
+  left: -2px;
+  animation: ai-flow-move 3s linear infinite;
 }
 
-@keyframes shimmer {
+@keyframes ai-flow-move {
   0% {
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    top: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
   }
   100% {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* AI Circuit Path Animation */
+.ai-circuit-path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: ai-circuit-dash 8s linear infinite;
+}
+
+@keyframes ai-circuit-dash {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -300;
+  }
+}
+
+/* AI Pulse Effect for CTA Button */
+.ai-pulse-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(93, 37, 159, 0.7) 0%, rgba(93, 37, 159, 0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: ai-pulse 2s ease-out infinite;
+}
+
+@keyframes ai-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
   }
 }
 `;
